@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.2002
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsMeet", "LetsMeet\LetsMeet.csproj", "{309AE1EF-EA8C-42A1-A72A-0D00BF585A90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetsMeet.Api", "LetsMeet\LetsMeet.Api.csproj", "{309AE1EF-EA8C-42A1-A72A-0D00BF585A90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsMeet.BL", "LetsMeet.BL\LetsMeet.BL.csproj", "{C433D226-CDC0-4145-90E9-C37F701A5B1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsMeet.DA", "LetsMeet.DA\LetsMeet.DA.csproj", "{771CC7C8-00A4-469C-B3E6-20E047A7689C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{309AE1EF-EA8C-42A1-A72A-0D00BF585A90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{309AE1EF-EA8C-42A1-A72A-0D00BF585A90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{309AE1EF-EA8C-42A1-A72A-0D00BF585A90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C433D226-CDC0-4145-90E9-C37F701A5B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C433D226-CDC0-4145-90E9-C37F701A5B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C433D226-CDC0-4145-90E9-C37F701A5B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C433D226-CDC0-4145-90E9-C37F701A5B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{771CC7C8-00A4-469C-B3E6-20E047A7689C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{771CC7C8-00A4-469C-B3E6-20E047A7689C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{771CC7C8-00A4-469C-B3E6-20E047A7689C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{771CC7C8-00A4-469C-B3E6-20E047A7689C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

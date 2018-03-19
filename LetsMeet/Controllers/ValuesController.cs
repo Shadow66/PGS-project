@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LetsMeet.BL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LetsMeet.Controllers
@@ -9,11 +10,18 @@ namespace LetsMeet.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly ITestService _testService;
+
+        public ValuesController(ITestService testService)
+        {
+            _testService = testService;
+        }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public int Get()
         {
-            return new string[] { "value1", "value2" };
+            return _testService.TestGet();
         }
 
         // GET api/values/5

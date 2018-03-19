@@ -1,11 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using LetsMeet.DA.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
-namespace LetsMeet.Models
+namespace LetsMeet.DA
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
