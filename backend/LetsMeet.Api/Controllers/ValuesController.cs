@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LetsMeet.BL.Interfaces;
+﻿using LetsMeet.BL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LetsMeet.Controllers
+namespace LetsMeet.Api.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller

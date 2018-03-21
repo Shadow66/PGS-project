@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LetsMeet.DA
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -21,5 +21,6 @@ namespace LetsMeet.DA
         }
 
         public DbSet<Event> Events { get; set; }
+        public DbSet<Participant> Participants { get; set; }
     }
 }

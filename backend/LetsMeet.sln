@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetsMeet.Api", "LetsMeet\LetsMeet.Api.csproj", "{309AE1EF-EA8C-42A1-A72A-0D00BF585A90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetsMeet.Api", "LetsMeet.Api\LetsMeet.Api.csproj", "{309AE1EF-EA8C-42A1-A72A-0D00BF585A90}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsMeet.BL", "LetsMeet.BL\LetsMeet.BL.csproj", "{C433D226-CDC0-4145-90E9-C37F701A5B1D}"
 EndProject
