@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using LetsMeet.Api;
+using LetsMeet.BL.Interfaces;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using LetsMeet.DA;
+
 
 namespace LetsMeet.Api
 {
@@ -22,11 +17,10 @@ namespace LetsMeet.Api
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-
+                var dbInititalizerService = services.GetRequiredService<IDbInitializerService>();
                 try
                 {
-                    // Requires using MvcMovie.Models;
-                    DbInitializer.Seed(services);
+                    dbInititalizerService.Seed();
                 }
                 catch (Exception ex)
                 {

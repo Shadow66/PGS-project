@@ -29,6 +29,10 @@ namespace LetsMeet.Api
             services.AddTransient<ITestService, TestService>();
             services.AddTransient<ITestRepository, TestRepository>();
 
+
+            services.AddTransient<IDbInitializerService, DbInitializerService>();
+            services.AddTransient<IDbInitializer, DbInitializer>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "LetsMeet.Api", Version = "v1" });
