@@ -1,4 +1,5 @@
-﻿using LetsMeet.BL.Interfaces;
+﻿using AutoMapper;
+using LetsMeet.BL.Interfaces;
 using LetsMeet.BL.Services;
 using LetsMeet.DA;
 using LetsMeet.DA.Interfaces;
@@ -30,6 +31,9 @@ namespace LetsMeet.Api
             services.AddTransient<ITestRepository, TestRepository>();
 
 
+            services.AddTransient<IFindEventsService, FindEventsService>();
+            services.AddTransient<IFindEventsRepository, FindEventsRepository>();
+
             services.AddTransient<IDbInitializerService, DbInitializerService>();
             services.AddTransient<IDbInitializer, DbInitializer>();
 
@@ -43,6 +47,8 @@ namespace LetsMeet.Api
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddAutoMapper();
             services.AddMvc();
         }
 

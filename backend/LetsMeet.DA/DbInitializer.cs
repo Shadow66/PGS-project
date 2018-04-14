@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using LetsMeet.DA.Enums;
 using LetsMeet.DA.Interfaces;
 using LetsMeet.DA.Models;
 using Microsoft.EntityFrameworkCore;
