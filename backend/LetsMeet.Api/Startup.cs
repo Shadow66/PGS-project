@@ -2,6 +2,7 @@
 using LetsMeet.BL.Interfaces;
 using LetsMeet.BL.Services;
 using LetsMeet.DA;
+using LetsMeet.DA.Dto;
 using LetsMeet.DA.Interfaces;
 using LetsMeet.DA.Models;
 using LetsMeet.DA.Repositories;
@@ -48,8 +49,8 @@ namespace LetsMeet.Api
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddAutoMapper();
             services.AddMvc();
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

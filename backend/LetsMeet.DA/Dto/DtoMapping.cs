@@ -6,6 +6,7 @@ using LetsMeet.DA.Models;
 
 namespace LetsMeet.DA.Dto
 {
+    /*
     public static class DtoMapping
     {
         public static EventDto ConvertToDto(this Event mevent)
@@ -26,5 +27,5 @@ namespace LetsMeet.DA.Dto
         {
             return mevent.Select(sevent => sevent.ConvertToDto());
         }
-    }
+    }*/
 }

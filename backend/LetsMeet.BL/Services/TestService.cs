@@ -1,6 +1,5 @@
 ﻿using LetsMeet.BL.Interfaces;
 using LetsMeet.DA.Interfaces;
-using LetsMeet.DA.Repositories;
 
 namespace LetsMeet.BL.Services
 {

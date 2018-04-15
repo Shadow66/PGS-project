@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using LetsMeet.BL.Interfaces;
 using LetsMeet.BL.ViewModel;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LetsMeet.Api.Controllers
@@ -18,7 +14,6 @@ namespace LetsMeet.Api.Controllers
 
         public EventsController(IFindEventsService iFindEventsService)
         {
-            int a = 5;
             _iFindEventsService = iFindEventsService;
         }
 

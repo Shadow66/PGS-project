@@ -6,14 +6,14 @@ using LetsMeet.DA.Enums;
 
 namespace LetsMeet.DA.Models
 {
-  
-
     public class Event
     {
         [Key]
         public int Id { get; set; }
+
         [ForeignKey("User")]
         public string HostId { get; set; }
+
         public User User { get; set; }
         public string Address { get; set; }
         public DateTime StartDate { get; set; }
