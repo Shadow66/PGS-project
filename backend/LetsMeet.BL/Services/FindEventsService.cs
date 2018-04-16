@@ -12,37 +12,36 @@ namespace LetsMeet.BL.Services
 {
     public class FindEventsService : IFindEventsService
     {
-        private readonly IFindEventsRepository _iFindEventsRepository;
+        private readonly IFindEventsRepository _findEventsRepository;
         private readonly IMapper _mapper;
 
-        public FindEventsService(IFindEventsRepository iFindEventsRepository, IMapper mapper)
+        public FindEventsService(IFindEventsRepository findEventsRepository, IMapper mapper)
         {
-            _iFindEventsRepository = iFindEventsRepository;
+            _findEventsRepository = findEventsRepository;
             _mapper = mapper;
         }
         public List<EventViewModel> GetAll()
         {
-            var result = _iFindEventsRepository.GetAll();
+            var result = _findEventsRepository.GetAll();
             return _mapper.Map<List<EventViewModel>>(result);
         }
 
         public List<EventViewModel> GetByTitle(string title)
         {
-            var result = _iFindEventsRepository.GetByTitle(title);
-            var selectedResult = result.Where(n => n.Title.Equals(title));
-            return _mapper.Map<List<EventViewModel>>(selectedResult);
+            var result = _findEventsRepository.GetByTitle(title);
+            return _mapper.Map<List<EventViewModel>>(result);
         }
 
         public void UpdateEvent(EventViewModel updated)
         {
             var eventDtoObject =_mapper.Map< EventDto > (updated);
-            _iFindEventsRepository.UpdateEvent(eventDtoObject);
+            _findEventsRepository.UpdateEvent(eventDtoObject);
         }
 
         public void AddEvent(EventViewModel newEvent)
         {
             var eventDtoObject = _mapper.Map<EventDto>(newEvent);
-            _iFindEventsRepository.AddEvent(eventDtoObject);
+            _findEventsRepository.AddEvent(eventDtoObject);
         }
     }
 }

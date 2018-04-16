@@ -1,8 +1,13 @@
-﻿namespace LetsMeet.BL.ViewModel
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LetsMeet.BL.ViewModel
 {
     public class EventViewModel
     {
-        public string Id { get; set; }
+        [Required]
+        public int Id { get; set; }
+
+        [MaxLength(10)]
         public string HostId { get; set; }
         public string Address { get; set; }
         public string StartDate { get; set; }

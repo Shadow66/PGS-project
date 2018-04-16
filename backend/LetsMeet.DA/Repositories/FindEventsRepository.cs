@@ -4,6 +4,7 @@ using LetsMeet.DA.Dto;
 using LetsMeet.DA.Interfaces;
 using AutoMapper;
 using LetsMeet.DA.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LetsMeet.DA.Repositories
 {
@@ -29,21 +30,16 @@ namespace LetsMeet.DA.Repositories
 
         public IEnumerable<EventDto> GetByTitle(string title)
         {
-            var result = _context.Events.ToList();
-            return _mapper.Map<List<EventDto>>(result);
+            var events = _context.Events.Where(x => x.Title == title).AsEnumerable();
+            var result = _mapper.Map<IEnumerable<EventDto>>(events);
+            return result;
         }
 
         public void UpdateEvent(EventDto updated)
         {
             var eventObject =_mapper.Map<Event>(updated);
-            var result = _context.Events.SingleOrDefault(n => n.Id == eventObject.Id);
+            var result = _context.Events.Single(n => n.Id == eventObject.Id);
 
-            result.Address = eventObject.Address;
-            result.StartDate = eventObject.StartDate;
-            result.EndDate = eventObject.EndDate;
-            result.Title = eventObject.Title;
-            result.Description = eventObject.Description;
-            result.Category = eventObject.Category;
             _context.SaveChanges();
         }
 

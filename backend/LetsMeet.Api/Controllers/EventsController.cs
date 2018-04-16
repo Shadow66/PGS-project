@@ -24,15 +24,20 @@ namespace LetsMeet.Api.Controllers
         }
 
         [HttpGet("{title}")]
-        public List<EventViewModel> GetByTitle(string title)
+        public IActionResult GetByTitle(string title)
         {
-            return _iFindEventsService.GetByTitle(title);
+            return Ok(_iFindEventsService.GetByTitle(title));
         }
 
         [HttpPut]
-        public void UpdateEvent([FromBody] EventViewModel updated)
+        public IActionResult UpdateEvent([FromBody] EventViewModel updated)
         {
-            _iFindEventsService.UpdateEvent(updated);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
         }
 
         [HttpPost]
