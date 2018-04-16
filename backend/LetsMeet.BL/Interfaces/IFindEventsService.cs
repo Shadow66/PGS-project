@@ -7,5 +7,9 @@ namespace LetsMeet.BL.Interfaces
     {
         List<EventViewModel> GetAll();
         List<EventViewModel> GetByTitle(string title);
+        void UpdateEvent(EventViewModel updated);
+        void AddEvent(EventViewModel newEvent);
+
+
     }
 }

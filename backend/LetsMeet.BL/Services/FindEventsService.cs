@@ -6,6 +6,7 @@ using LetsMeet.BL.Interfaces;
 using LetsMeet.BL.ViewModel;
 using LetsMeet.DA.Dto;
 using LetsMeet.DA.Interfaces;
+using System.Linq;
 
 namespace LetsMeet.BL.Services
 {
@@ -27,7 +28,21 @@ namespace LetsMeet.BL.Services
 
         public List<EventViewModel> GetByTitle(string title)
         {
-            throw new NotImplementedException();
+            var result = _iFindEventsRepository.GetByTitle(title);
+            var selectedResult = result.Where(n => n.Title.Equals(title));
+            return _mapper.Map<List<EventViewModel>>(selectedResult);
+        }
+
+        public void UpdateEvent(EventViewModel updated)
+        {
+            var eventDtoObject =_mapper.Map< EventDto > (updated);
+            _iFindEventsRepository.UpdateEvent(eventDtoObject);
+        }
+
+        public void AddEvent(EventViewModel newEvent)
+        {
+            var eventDtoObject = _mapper.Map<EventDto>(newEvent);
+            _iFindEventsRepository.AddEvent(eventDtoObject);
         }
     }
 }

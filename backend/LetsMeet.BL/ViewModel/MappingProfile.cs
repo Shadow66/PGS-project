@@ -8,6 +8,7 @@ namespace LetsMeet.BL.ViewModel
         public MappingProfile()
         {
             CreateMap<EventDto, EventViewModel>();
+            CreateMap<EventViewModel, EventDto>();
         }
     }
 }

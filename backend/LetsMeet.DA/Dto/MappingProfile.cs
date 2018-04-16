@@ -11,6 +11,9 @@ namespace LetsMeet.DA.Dto
         public MappingProfile()
         {
             CreateMap<Event, EventDto>();
+            CreateMap<EventDto, Event>();
+            CreateMap<Event, Event>();
+
         }
     }
 }

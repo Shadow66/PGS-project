@@ -22,5 +22,23 @@ namespace LetsMeet.Api.Controllers
         {
             return _iFindEventsService.GetAll();
         }
+
+        [HttpGet("{title}")]
+        public List<EventViewModel> GetByTitle(string title)
+        {
+            return _iFindEventsService.GetByTitle(title);
+        }
+
+        [HttpPut]
+        public void UpdateEvent([FromBody] EventViewModel updated)
+        {
+            _iFindEventsService.UpdateEvent(updated);
+        }
+
+        [HttpPost]
+        public void AddEvent([FromBody] EventViewModel newEvent)
+        {
+            _iFindEventsService.AddEvent(newEvent);
+        }
     }
 }
