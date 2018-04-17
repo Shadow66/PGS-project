@@ -7,6 +7,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
+import { ApiService } from './shared/api.service';
+import { TestComponent } from './components/test/test.component';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -14,13 +17,15 @@ import { HomeComponent } from './pages/home/home.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
