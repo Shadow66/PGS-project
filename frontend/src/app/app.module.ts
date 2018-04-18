@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ApiService } from './shared/api.service';
 import { TestComponent } from './components/test/test.component';
 import { HttpModule } from '@angular/http';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpModule } from '@angular/http';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    TestComponent
+    TestComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
