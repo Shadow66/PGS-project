@@ -11,6 +11,8 @@ import { ApiService } from './shared/api.service';
 import { TestComponent } from './components/test/test.component';
 import { HttpModule } from '@angular/http';
 import { SearchComponent } from './components/search/search.component';
+import { EventsListComponent } from './components/events-list/events-list.component';
+import { EventComponent } from './components/events-list/event/event.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { SearchComponent } from './components/search/search.component';
     FooterComponent,
     HomeComponent,
     TestComponent,
-    SearchComponent
+    SearchComponent,
+    EventsListComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,
