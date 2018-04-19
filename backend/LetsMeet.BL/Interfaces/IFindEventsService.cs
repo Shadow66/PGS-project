@@ -11,6 +11,7 @@ namespace LetsMeet.BL.Interfaces
         void AddEvent(EventViewModel newEvent);
         void DeleteEvent(int id);
         string GetEventDescription(int id);
+        List<EventWithHostNameViewModel> GetEventsWithHostNames();
 
     }
 }

@@ -12,7 +12,7 @@ namespace LetsMeet.DA.Dto
         {
             CreateMap<Event, EventDto>();
             CreateMap<EventDto, Event>();
-            CreateMap<Event, Event>();
+            CreateMap<Event, EventWithHostNameDto>();
 
         }
     }

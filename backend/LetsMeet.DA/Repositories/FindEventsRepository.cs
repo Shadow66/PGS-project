@@ -5,6 +5,7 @@ using LetsMeet.DA.Interfaces;
 using AutoMapper;
 using LetsMeet.DA.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace LetsMeet.DA.Repositories
 {
@@ -44,13 +45,32 @@ namespace LetsMeet.DA.Repositories
             return result;
         }
 
+        public List<EventWithHostNameDto> GetEventsWithHostNames()
+        {
+            var eventsInDB = _context.Events.ToList();
+            var result = _mapper.Map<List<EventWithHostNameDto>>(eventsInDB);
+
+            foreach(var item in eventsInDB)
+            {
+                var user = _context.Users.Single(n => n.Id.Equals(item.HostId));
+                item.HostId = user.UserName;
+            }
+
+            for(int i=0;i<result.Count;i++)
+            {
+                result[i].HostName = eventsInDB[i].HostId;
+            }
+        
+            return result;
+
+        }
+
         public void UpdateEvent(EventDto updated)
         {
             var eventObject =_mapper.Map<Event>(updated);
             var eventInDb = _context.Events.Single(n => n.Id == eventObject.Id);
             _context.Entry(eventInDb).CurrentValues.SetValues(eventObject);
         
-
             _context.SaveChanges();
         }
 

@@ -11,6 +11,6 @@ namespace LetsMeet.DA.Interfaces
         void AddEvent(EventDto newEvent);
         void DeleteEvent(int id);
         string GetEventDescription(int id);
-
+        List<EventWithHostNameDto> GetEventsWithHostNames();
     }
 }
