@@ -10,7 +10,7 @@ namespace LetsMeet.BL.Interfaces
         void UpdateEvent(EventViewModel updated);
         void AddEvent(EventViewModel newEvent);
         void DeleteEvent(int id);
-
+        string GetEventDescription(int id);
 
     }
 }

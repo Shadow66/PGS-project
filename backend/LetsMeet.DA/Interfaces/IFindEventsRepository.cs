@@ -10,6 +10,7 @@ namespace LetsMeet.DA.Interfaces
         void UpdateEvent(EventDto updated);
         void AddEvent(EventDto newEvent);
         void DeleteEvent(int id);
+        string GetEventDescription(int id);
 
     }
 }

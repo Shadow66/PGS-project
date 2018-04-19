@@ -35,6 +35,13 @@ namespace LetsMeet.DA.Repositories
             return result;
         }
 
+        public string GetEventDescription(int id)
+        {
+            var eventInDb = _context.Events.SingleOrDefault(n => n.Id == id);
+            var result = eventInDb.Description;
+            return result;
+        }
+
         public void UpdateEvent(EventDto updated)
         {
             var eventObject =_mapper.Map<Event>(updated);
