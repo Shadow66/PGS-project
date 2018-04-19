@@ -9,6 +9,7 @@ namespace LetsMeet.DA.Interfaces
         IEnumerable<EventDto> GetByTitle(string title);
         void UpdateEvent(EventDto updated);
         void AddEvent(EventDto newEvent);
+        void DeleteEvent(int id);
 
     }
 }

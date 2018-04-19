@@ -38,7 +38,9 @@ namespace LetsMeet.DA.Repositories
         public void UpdateEvent(EventDto updated)
         {
             var eventObject =_mapper.Map<Event>(updated);
-            var result = _context.Events.Single(n => n.Id == eventObject.Id);
+            var eventInDb = _context.Events.Single(n => n.Id == eventObject.Id);
+            _context.Entry(eventInDb).CurrentValues.SetValues(eventObject);
+        
 
             _context.SaveChanges();
         }
@@ -47,6 +49,13 @@ namespace LetsMeet.DA.Repositories
         {
             var eventObject = _mapper.Map<Event>(newEvent);
             _context.Events.Add(eventObject);
+            _context.SaveChanges();
+        }
+
+        public void DeleteEvent(int id)
+        {
+            var eventInDb = _context.Events.SingleOrDefault(n => n.Id == id);
+            _context.Events.Remove(eventInDb);
             _context.SaveChanges();
         }
     }

@@ -43,5 +43,10 @@ namespace LetsMeet.BL.Services
             var eventDtoObject = _mapper.Map<EventDto>(newEvent);
             _findEventsRepository.AddEvent(eventDtoObject);
         }
+
+        public void DeleteEvent(int id)
+        {
+            _findEventsRepository.DeleteEvent(id);
+        }
     }
 }

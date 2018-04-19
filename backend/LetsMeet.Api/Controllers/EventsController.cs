@@ -18,9 +18,9 @@ namespace LetsMeet.Api.Controllers
         }
 
         [HttpGet]
-        public List<EventViewModel> Get()
+        public IActionResult Get()
         {
-            return _iFindEventsService.GetAll();
+            return Ok(_iFindEventsService.GetAll());
         }
 
         [HttpGet("{title}")]
@@ -36,14 +36,23 @@ namespace LetsMeet.Api.Controllers
             {
                 return BadRequest();
             }
+            _iFindEventsService.UpdateEvent(updated);
 
             return Ok();
         }
 
         [HttpPost]
-        public void AddEvent([FromBody] EventViewModel newEvent)
+        public IActionResult AddEvent([FromBody] EventViewModel newEvent)
         {
             _iFindEventsService.AddEvent(newEvent);
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteEvent(int id)
+        {
+            _iFindEventsService.DeleteEvent(id);
+            return Ok();
         }
     }
 }
