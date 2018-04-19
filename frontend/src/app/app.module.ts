@@ -11,8 +11,12 @@ import { ApiService } from './shared/api.service';
 import { TestComponent } from './components/test/test.component';
 import { HttpModule } from '@angular/http';
 import { SearchComponent } from './components/search/search.component';
-import { EventsListComponent } from './components/events-list/events-list.component';
-import { EventComponent } from './components/events-list/event/event.component';
+
+import { EventsListComponent } from './pages/find/events-list/events-list.component';
+import { EventComponent } from './pages/find/events-list/event/event.component';
+
+import { FindComponent } from './pages/find/find.component';
+import { SearchCommunicationService } from './shared/search-communication.service';
 
 
 @NgModule({
@@ -24,14 +28,15 @@ import { EventComponent } from './components/events-list/event/event.component';
     TestComponent,
     SearchComponent,
     EventsListComponent,
-    EventComponent
+    EventComponent,
+    FindComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, SearchCommunicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
