@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { EventListModel } from '../../../shared/event.model';
+import { EventListModel } from '../../../../shared/event.model';
 
 @Component({
   selector: 'app-event',
