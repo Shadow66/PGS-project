@@ -1,9 +1,11 @@
-<form class="form-inline">
-  <div class="row">
-    <div class="form-group">
-      <label for="name">Search:</label>
-      <input type="text" class="form-control" #searchInput>
-      <button type="button" class="btn btn-success" (click)="onSearch(searchInput.value)">Search</button>
+<div class="container">
+  <form class="form-inline">
+    <div class="row">
+      <div class="form-group">
+        <label for="name">Search:</label>
+        <input type="text" class="form-control" #searchInput>
+        <button type="button" class="btn btn-success" (click)="onSearch(searchInput.value)" routerLink="find">Search</button>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>
