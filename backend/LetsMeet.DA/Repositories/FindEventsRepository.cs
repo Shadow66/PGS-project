@@ -25,12 +25,14 @@ namespace LetsMeet.DA.Repositories
             //var result2 = _mapper.Map<EventDto>(result1);
 
             var result = _context.Events.ToList();
+            result.ForEach(i => i.Description = "");
             return _mapper.Map<List<EventDto>>(result);
         }
 
         public IEnumerable<EventDto> GetByTitle(string title)
         {
-            var events = _context.Events.Where(x => x.Title == title).AsEnumerable();
+            var events = _context.Events.Where(x => x.Title == title).ToList();
+            events.ForEach(i => i.Description = "");
             var result = _mapper.Map<IEnumerable<EventDto>>(events);
             return result;
         }
