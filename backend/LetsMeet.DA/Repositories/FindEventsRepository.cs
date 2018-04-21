@@ -64,14 +64,21 @@ namespace LetsMeet.DA.Repositories
             return result;
         }
 
-        public EventWithHostNameDto GetEventWithHostName(int id)
+        public List<EventWithHostNameDto> GetEventWithHostName(string title)
         {
-            var wantedEvent = _context.Events.Single(n => n.Id == id);
-            var host = _context.Users.Single(n => n.Id.Equals(wantedEvent.HostId));
+            var wantedEvents = _context.Events.Where(n => n.Title == title).ToList();
+            var result = _mapper.Map<List<EventWithHostNameDto>>(wantedEvents);
 
-            var result = _mapper.Map<EventWithHostNameDto>(wantedEvent);
+            foreach (var item in wantedEvents)
+            {
+                var user = _context.Users.Single(n => n.Id.Equals(item.HostId));
+                item.HostId = user.UserName;
+            }
 
-            result.HostName = host.UserName;
+            for (int i = 0; i < result.Count; i++)
+            {
+                result[i].HostName = wantedEvents[i].HostId;
+            }
 
             return result;
         }
