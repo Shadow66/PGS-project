@@ -9,7 +9,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ApiService } from './shared/api.service';
 import { TestComponent } from './components/test/test.component';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
 
 import { EventsListComponent } from './pages/find/events-list/events-list.component';
@@ -34,7 +34,7 @@ import { SearchCommunicationService } from './shared/search-communication.servic
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule
+    HttpClientModule
   ],
   providers: [ApiService, SearchCommunicationService],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { EventListModel } from '../../../shared/event.model';
+import { EventListModel } from '../../../shared/models/event.model';
 import { SearchCommunicationService } from '../../../shared/search-communication.service';
 
 @Component({
@@ -12,8 +12,7 @@ export class EventsListComponent implements OnInit {
   constructor(private _searchCommuncationService: SearchCommunicationService) { }
 
   ngOnInit() {
-    // this.events = this._searchCommuncationService.dataArray;
-    this._searchCommuncationService.currentMessage.subscribe(events => this.events = events);
+    this._searchCommuncationService.currentEventsList.subscribe(events => this.events = events);
   }
 
 }
