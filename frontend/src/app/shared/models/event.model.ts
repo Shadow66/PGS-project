@@ -5,5 +5,6 @@ export class EventListModel {
     public Address: string,
     public StartDate: Date,
     public Title: string,
-    public Category: string) {}
+    public Category: string
+  ) {}
 }

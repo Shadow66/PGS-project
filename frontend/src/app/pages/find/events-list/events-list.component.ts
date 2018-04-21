@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { EventListModel } from '../../../shared/event.model';
+import { EventListModel } from '../../../shared/models/event.model';
 import { SearchCommunicationService } from '../../../shared/search-communication.service';
 
 @Component({
