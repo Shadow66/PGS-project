@@ -17,8 +17,11 @@ import { EventComponent } from './pages/find/events-list/event/event.component';
 
 import { FindComponent } from './pages/find/find.component';
 import { SearchCommunicationService } from './shared/search-communication.service';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './auth/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,14 +32,18 @@ import { SearchCommunicationService } from './shared/search-communication.servic
     SearchComponent,
     EventsListComponent,
     EventComponent,
-    FindComponent
+    FindComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [ApiService, SearchCommunicationService],
+  providers: [ApiService, SearchCommunicationService, AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
