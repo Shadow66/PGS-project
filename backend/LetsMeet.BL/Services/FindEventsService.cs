@@ -44,10 +44,10 @@ namespace LetsMeet.BL.Services
             return _mapper.Map<List<EventWithHostNameViewModel>>(result);
         }
 
-        public EventWithHostNameViewModel GetEventWithHostName(int id)
+        public List<EventWithHostNameViewModel> GetEventWithHostName(string title)
         {
-            var result = _findEventsRepository.GetEventWithHostName(id);
-            return _mapper.Map<EventWithHostNameViewModel>(result);
+            var result = _findEventsRepository.GetEventWithHostName(title);
+            return _mapper.Map<List<EventWithHostNameViewModel>>(result);
         }
 
         public int GetNumberEventParticipants(int id)
