@@ -50,6 +50,12 @@ namespace LetsMeet.Api.Controllers
             return Ok(_iFindEventsService.GetEventWithHostName(id));
         }
 
+        [HttpGet("GetNumberEventParticipants/{id}")]
+        public IActionResult GetNumberEventParticipants(int id)
+        {
+            return Ok(_iFindEventsService.GetNumberEventParticipants(id));
+        }
+
         [HttpPut]
         public IActionResult UpdateEvent([FromBody] EventViewModel updated)
         {

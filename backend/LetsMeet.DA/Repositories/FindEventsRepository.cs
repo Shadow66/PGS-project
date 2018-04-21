@@ -50,17 +50,17 @@ namespace LetsMeet.DA.Repositories
             var eventsInDB = _context.Events.ToList();
             var result = _mapper.Map<List<EventWithHostNameDto>>(eventsInDB);
 
-            foreach(var item in eventsInDB)
+            foreach (var item in eventsInDB)
             {
                 var user = _context.Users.Single(n => n.Id.Equals(item.HostId));
                 item.HostId = user.UserName;
             }
 
-            for(int i=0;i<result.Count;i++)
+            for (int i = 0; i < result.Count; i++)
             {
                 result[i].HostName = eventsInDB[i].HostId;
             }
-        
+
             return result;
         }
 
@@ -75,6 +75,13 @@ namespace LetsMeet.DA.Repositories
 
             return result;
         }
+
+        public int GetNumberEventParticipants(int id)
+        {
+            int result = _context.Participants.Count(n => n.EventId == id);
+            return result;
+        }
+
 
         public void UpdateEvent(EventDto updated)
         {
@@ -98,5 +105,6 @@ namespace LetsMeet.DA.Repositories
             _context.Events.Remove(eventInDb);
             _context.SaveChanges();
         }
+        
     }
 }
