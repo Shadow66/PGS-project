@@ -62,7 +62,18 @@ namespace LetsMeet.DA.Repositories
             }
         
             return result;
+        }
 
+        public EventWithHostNameDto GetEventWithHostName(int id)
+        {
+            var wantedEvent = _context.Events.Single(n => n.Id == id);
+            var host = _context.Users.Single(n => n.Id.Equals(wantedEvent.HostId));
+
+            var result = _mapper.Map<EventWithHostNameDto>(wantedEvent);
+
+            result.HostName = host.UserName;
+
+            return result;
         }
 
         public void UpdateEvent(EventDto updated)

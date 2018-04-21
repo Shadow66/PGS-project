@@ -37,10 +37,17 @@ namespace LetsMeet.Api.Controllers
             return Ok(_iFindEventsService.GetEventDescription(id));
         }
 
+
         [HttpGet("GetEventsWithHostNames")]
         public IActionResult GetEventsWithHostNames()
         {
             return Ok(_iFindEventsService.GetEventsWithHostNames());
+        }
+
+        [HttpGet("GetEventWithHostName/{id}")]
+        public IActionResult GetEventWithHostName(int id)
+        {
+            return Ok(_iFindEventsService.GetEventWithHostName(id));
         }
 
         [HttpPut]
