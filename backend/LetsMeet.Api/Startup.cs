@@ -6,7 +6,6 @@ using LetsMeet.DA.Dto;
 using LetsMeet.DA.Interfaces;
 using LetsMeet.DA.Models;
 using LetsMeet.DA.Repositories;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -14,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace LetsMeet.Api
@@ -63,6 +63,12 @@ namespace LetsMeet.Api
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = IdentityConstants.ApplicationScheme;
+                options.DefaultChallengeScheme = IdentityConstants.ApplicationScheme;
+            });
+
             services.AddMvc();
             services.AddAutoMapper();
         }
@@ -81,6 +87,8 @@ namespace LetsMeet.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+        
 
             // app.UseIdentity();
             app.UseStaticFiles();

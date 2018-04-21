@@ -35,11 +35,6 @@ namespace LetsMeet.DA.Repositories
 
         public async Task LogInAsync(AccountRegisterLoginDto model)
         {
-            User us = new User
-            {
-                Email = model.Email,
-                UserName = model.Email,
-            };
            
             try
             {   
