@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class SearchCommunicationService {
 
   private events = new BehaviorSubject<EventListModel[]>([]);
-  currentMessage = this.events.asObservable();
+  currentEventsList = this.events.asObservable();
 
   insertData(events: EventListModel[]) {
     this.events.next(events);

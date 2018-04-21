@@ -9,27 +9,21 @@ import { EventListModel } from '../../shared/models/event.model';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  events: EventListModel[] = [];
+  events: EventListModel[];
   constructor(private apiService: ApiService,  private _searchCommuncationService: SearchCommunicationService) { }
 
   ngOnInit() {
-    this._searchCommuncationService.currentMessage.subscribe(events => this.events = events);
+     this._searchCommuncationService.currentEventsList.subscribe(events => this.events = events);
+     console.log(this.events);
   }
   onSearch(input: string) {
     this.apiService
       .getEvents(input)
       .subscribe(
-        response => console.log(response),
+        events => this.events = events,
         error => console.log(error)
       );
-      /*this.events  = [
-        new EventListModel(1, 'PWR', 'Address1', new Date(), 'Title1', 'cat1', 54),
-        new EventListModel(2, 'PWR', 'Address2', new Date(), 'Title2', 'cat2', 32),
-        new EventListModel(2, 'PWR', 'Address2', new Date(), 'Title3', 'cat2', 24),
-        new EventListModel(2, 'PWR', 'Address2', new Date(), 'Title4', 'cat2', 44),
-        new EventListModel(2, 'PWR', 'Address2', new Date(), 'Title5', 'cat2', 24),
-        new EventListModel(2, 'PWR', 'Address2', new Date(), 'Title6', 'cat2', 43)
-      ];*/
+      console.log(this.events);
       this._searchCommuncationService.insertData(this.events);
   }
 }

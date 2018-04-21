@@ -1,10 +1,11 @@
 export class EventListModel {
   constructor(
-    public Id: number,
-    public HostName: string,
-    public Address: string,
-    public StartDate: Date,
-    public Title: string,
-    public Category: string
+    public id: number,
+    public hostName: string,
+    public address: string,
+    public startDate: Date,
+    public title: string,
+    public category: string,
+    public participants: number
   ) {}
 }

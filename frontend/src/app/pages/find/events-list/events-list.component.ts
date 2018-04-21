@@ -12,8 +12,7 @@ export class EventsListComponent implements OnInit {
   constructor(private _searchCommuncationService: SearchCommunicationService) { }
 
   ngOnInit() {
-    // this.events = this._searchCommuncationService.dataArray;
-    this._searchCommuncationService.currentMessage.subscribe(events => this.events = events);
+    this._searchCommuncationService.currentEventsList.subscribe(events => this.events = events);
   }
 
 }
