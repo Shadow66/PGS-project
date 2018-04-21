@@ -6,6 +6,7 @@ using LetsMeet.DA.Dto;
 using LetsMeet.DA.Interfaces;
 using LetsMeet.DA.Models;
 using LetsMeet.DA.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -13,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using System.Threading.Tasks;
 
 namespace LetsMeet.Api
 {
@@ -36,8 +38,12 @@ namespace LetsMeet.Api
                         .AllowAnyHeader()
                         .AllowCredentials());
             });
+
             services.AddTransient<ITestService, TestService>();
             services.AddTransient<ITestRepository, TestRepository>();
+
+            services.AddTransient<IAuthorizeService, AuthorizeService>();
+            services.AddTransient<IAuthorizeRepository, AuthorizeRepository>();
 
 
             services.AddTransient<IFindEventsService, FindEventsService>();
@@ -76,6 +82,10 @@ namespace LetsMeet.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            // app.UseIdentity();
+            app.UseStaticFiles();
+
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

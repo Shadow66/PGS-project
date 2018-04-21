@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using LetsMeet.BL.Interfaces;
 using LetsMeet.BL.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LetsMeet.Api.Controllers
 {
     //[Produces("application/json")]
     //[Route("api/Events")]
+    [Authorize]
     [Route("api/[controller]")]
     public class EventsController : Controller
     {
@@ -41,6 +43,7 @@ namespace LetsMeet.Api.Controllers
             return Ok(_iFindEventsService.GetEventsWithHostNames());
         }
 
+        [Authorize]
         [HttpPut]
         public IActionResult UpdateEvent([FromBody] EventViewModel updated)
         {
