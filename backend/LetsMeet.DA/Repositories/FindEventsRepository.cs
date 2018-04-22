@@ -112,6 +112,49 @@ namespace LetsMeet.DA.Repositories
             _context.Events.Remove(eventInDb);
             _context.SaveChanges();
         }
-        
+
+        public List<EventWithHostNameDto> GetMostPopularEvents()
+        {
+            const int PopularEventsNumber = 3;
+            var popularEvents = from p in _context.Participants.GroupBy(p => p.EventId)
+                                select new
+                                {
+                                    count = p.Count(),
+                                    p.First().EventId
+                                };
+
+            Dictionary<int,int> popularEventsDict = new Dictionary<int, int>();
+            foreach (var item in popularEvents)
+            {
+                popularEventsDict.Add(item.EventId, item.count);
+            }
+            var sortedDict = from item in popularEventsDict orderby item.Value descending select item;
+
+            var indexList = new List<int>();
+            foreach(var item in sortedDict)
+            {
+                indexList.Add(item.Key);
+            }
+
+            var eventsList = new List<Event>();
+            for(int i=0;i<PopularEventsNumber;i++)
+            {
+                eventsList.Add(_context.Events.Single(n => n.Id == indexList[i]));
+            }
+
+            var result = _mapper.Map<List<EventWithHostNameDto>>(eventsList);
+
+            foreach (var item in eventsList)
+            {
+                var user = _context.Users.Single(n => n.Id.Equals(item.HostId));
+                item.HostId = user.UserName;
+            }
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                result[i].HostName = eventsList[i].HostId;
+            }
+            return result;
+        }
     }
 }
