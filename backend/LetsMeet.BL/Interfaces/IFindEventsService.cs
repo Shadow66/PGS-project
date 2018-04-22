@@ -12,7 +12,7 @@ namespace LetsMeet.BL.Interfaces
         void DeleteEvent(int id);
         string GetEventDescription(int id);
         List<EventWithHostNameViewModel> GetEventsWithHostNames();
-        List<EventWithHostNameViewModel> GetEventWithHostName(string title);
+        List<EventWithHostNameViewModel> GetEventsWithHostNames(string title);
         int GetNumberEventParticipants(int id);
        
 
