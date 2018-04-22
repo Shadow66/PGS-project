@@ -44,10 +44,10 @@ namespace LetsMeet.Api.Controllers
             return Ok(_iFindEventsService.GetEventsWithHostNames());
         }
 
-        [HttpGet("GetEventWithHostName/{title}")]
-        public IActionResult GetEventWithHostName(string title)
+        [HttpGet("GetEventsWithHostNames/{title}")]
+        public IActionResult GetEventsWithHostNames(string title)
         {
-            return Ok(_iFindEventsService.GetEventWithHostName(title));
+            return Ok(_iFindEventsService.GetEventsWithHostNames(title));
         }
 
         [HttpGet("GetNumberEventParticipants/{id}")]

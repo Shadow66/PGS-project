@@ -12,7 +12,7 @@ namespace LetsMeet.DA.Interfaces
         void DeleteEvent(int id);
         string GetEventDescription(int id);
         List<EventWithHostNameDto> GetEventsWithHostNames();
-        List<EventWithHostNameDto> GetEventWithHostName(string title);
+        List<EventWithHostNameDto> GetEventsWithHostNames(string title);
         int GetNumberEventParticipants(int id);
         List<EventWithHostNameDto> GetMostPopularEvents();
     }
