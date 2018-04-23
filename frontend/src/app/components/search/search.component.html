@@ -1,11 +1,8 @@
 <div class="container">
-  <form class="form-inline">
     <div class="row">
-      <div class="form-group">
-        <label for="name">Search:</label>
-        <input type="text" class="form-control" #searchInput>
-        <button type="submit" class="btn btn-success" (click)="onSearch(searchInput.value)">Search</button>
-      </div>
+      <form class="form-inline">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" #searchInput>
+        <button class="btn btn-outline-success" type="submit" (click)="onSearch(searchInput.value)">Search</button>
+      </form>
     </div>
-  </form>
 </div>
