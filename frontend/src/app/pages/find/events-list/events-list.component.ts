@@ -16,17 +16,9 @@ export class EventsListComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
   ngOnChanges(changes: SimpleChanges) {
-    console.log('alo');
     this.searchService
       .getEvents(this.keyword)
       .subscribe(events => (this.events = events), error => console.log(error));
-      console.log(this.events);
-    this.events.forEach(element => {
-      console.log('dds');
-        this.searchService.getEventParticipantNumber(element.id)
-        // .subscribe(participants => console.log(participants), error => console.log(error));
-         .subscribe(participants => (element.participants = participants), error => console.log(error));
-      });
   }
 }
 
