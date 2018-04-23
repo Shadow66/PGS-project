@@ -15,7 +15,6 @@ import { EventsListComponent } from './pages/find/events-list/events-list.compon
 import { EventComponent } from './pages/find/events-list/event/event.component';
 
 import { FindComponent } from './pages/find/find.component';
-import { SearchCommunicationService } from './shared/search-communication.service';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 
@@ -46,7 +45,7 @@ import { ApiService } from './shared/services/api.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ApiService, SearchCommunicationService, AuthService, SearchService],
+  providers: [ApiService, AuthService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
