@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../shared/services/api.service';
-import { SearchCommunicationService } from '../../shared/search-communication.service';
 import { EventListModel } from '../../shared/models/event.model';
 import { SearchService } from '../../shared/services/search.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -10,24 +10,14 @@ import { SearchService } from '../../shared/services/search.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  events: EventListModel[];
-  constructor(
-    private apiService: ApiService,
-    private searchService: SearchService,
-    private searchCommuncationService: SearchCommunicationService
-  ) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit() {
-    this.searchCommuncationService.currentEventsList.subscribe(
-      events => (this.events = events)
-    );
-    console.log(this.events);
-  }
+  ngOnInit() {}
   onSearch(input: string) {
-    this.searchService
-      .getEvents(input)
-      .subscribe(events => (this.events = events), error => console.log(error));
-    console.log(this.events);
-    this.searchCommuncationService.insertData(this.events);
+    console.log(input);
+    if (input === undefined) {
+      input = '';
+    }
+    this.router.navigateByUrl('/find/' + input);
   }
 }

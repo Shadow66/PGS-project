@@ -14,6 +14,10 @@ const routes: Routes = [
     component: FindComponent
   },
   {
+    path: 'find/:keyword',
+    component: FindComponent
+  },
+  {
     path: 'signup',
     component: SignupComponent
   },
