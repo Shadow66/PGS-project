@@ -3,8 +3,9 @@
     <h4 class="list-group-item-heading">
       <small>{{ event.startDate | date: 'dd-mm-yyyy, hh:mm a' }} </small>
       {{ event.title }}
-      <small>{{ event.hostName }}</small>
+      <small>organized by {{ event.hostName }}</small>
     </h4>
-    <p class="list-group-item-text"> {{ event.category }}</p>
+    <p class="list-group-item-text"> Category: {{ event.category }}, Address: {{ event.address }}</p>
+    <p class="list-group-item-text">{{event.participants}} Members going!</p>
   </div>
 </a>

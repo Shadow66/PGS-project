@@ -15,4 +15,9 @@ export class SearchService {
       this.apiService.url + this.url + 'geteventswithhostnames/' + searchInput
     );
   }
+  getEventParticipantNumber(eventId: number): Observable<number> {
+    return this._http.get<number>(
+      this.apiService.url + this.url + 'GetNumberEventParticipants/' + eventId
+    );
+  }
 }
