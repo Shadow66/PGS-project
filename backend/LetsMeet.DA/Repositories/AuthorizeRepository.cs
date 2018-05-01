@@ -3,49 +3,79 @@ using LetsMeet.DA.Interfaces;
 using LetsMeet.DA.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Configuration;
+using System.Security.Claims;
+using System.Linq;
 
 namespace LetsMeet.DA.Repositories
 {
     public class AuthorizeRepository : IAuthorizeRepository
     {
+        private readonly ApplicationDbContext _context;
         private SignInManager<User> _signManager;
         private UserManager<User> _userManager;
+        private readonly IMapper _mapper;
+        private IConfiguration _config;
 
-        public AuthorizeRepository( 
+        public AuthorizeRepository(
+            ApplicationDbContext context,
             UserManager<User> userManager,
-            SignInManager<User> signManager)
+            SignInManager<User> signManager,
+            IConfiguration config,
+            IMapper mapper)
         {
+            _context = context;
             _userManager = userManager;
             _signManager = signManager;
+            _config = config;
+            _mapper = mapper;
         }
+
         public async Task CreateAsync(AccountRegisterLoginDto model)
         {
-            User user = new User
-            {
-                UserName = model.Email,
-                Email = model.Email
-            };
+            var user = _mapper.Map<User>(model);
+            user.UserName = model.Email;
 
             var result = await _userManager.CreateAsync(user, model.Password);
-            
         }
 
-        public async Task LogInAsync(AccountRegisterLoginDto model)
+        public async Task<AccountRegisterLoginDto> Authenticate(AccountRegisterLoginDto accountRegisterLoginDto)
         {
-           
-            try
-            {   
-                var result = await _signManager.PasswordSignInAsync(model.Email, model.Password, false, false);
-              
-            }
-            catch(Exception e)
+            var user = _context.Users.SingleOrDefault(n => n.Email == accountRegisterLoginDto.Email);
+            if(user != null)
             {
-                
+                var signInResult = await _signManager.CheckPasswordSignInAsync(user, accountRegisterLoginDto.Password, false);
+                if (!signInResult.Succeeded)
+                {
+                    user = null;
+                }
             }
-          
+            var result = _mapper.Map<AccountRegisterLoginDto>(user);
+            return result;
         }
+
+        public string BuildToken(AccountRegisterLoginDto user)
+        {
+            var claims = new[] {
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(_config["Jwt:Issuer"],
+              _config["Jwt:Issuer"],
+              claims,
+              expires: DateTime.Now.AddMinutes(30),
+              signingCredentials: creds);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
     }
 }

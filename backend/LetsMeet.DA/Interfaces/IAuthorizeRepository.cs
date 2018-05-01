@@ -9,6 +9,7 @@ namespace LetsMeet.DA.Interfaces
     public interface IAuthorizeRepository
     {
         Task CreateAsync(AccountRegisterLoginDto model);
-        Task LogInAsync(AccountRegisterLoginDto model);
+        Task<AccountRegisterLoginDto> Authenticate(AccountRegisterLoginDto accountRegisterLoginDto);
+        string BuildToken(AccountRegisterLoginDto user);
     }
 }

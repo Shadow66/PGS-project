@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Security.Claims;
 using LetsMeet.BL.Interfaces;
 using LetsMeet.BL.ViewModel;
-using LetsMeet.DA.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 
 namespace LetsMeet.Api.Controllers
 {
@@ -41,60 +34,15 @@ namespace LetsMeet.Api.Controllers
             return Ok();
         }
 
-        /* [HttpPost]
-         public async Task<IActionResult> LogInAsync([FromBody] AccountRegisterLoginViewModel model)
-         {
-             if (!ModelState.IsValid)
-             {
-                 return BadRequest(ModelState.Values.SelectMany(v => v.Errors).Select(modelError => modelError.ErrorMessage).ToList());
-             }
-
-             var result = await _signManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: false, lockoutOnFailure: false);
-
-             if (!result.Succeeded)
-             {
-                 return BadRequest();
-             }
-
-             // _iAuthorizedService.LogIn(model);
-
-             return Ok();
-         }*/
-
-        private User Authenticate(AccountRegisterLoginViewModel login)
-        {
-            User user = null;
-
-            if (login.Email == "123@gmail.com" && login.Password == "secret")
-            {
-                user = new User { UserName = "tom hanks", Email = "123@gmail.com" };
-            }
-            return user;
-        }
-
-        private string BuildToken(User user)
-        {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(_config["Jwt:Issuer"],
-              _config["Jwt:Issuer"],
-              expires: DateTime.Now.AddMinutes(30),
-              signingCredentials: creds);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult CreateToken([FromBody]AccountRegisterLoginViewModel login)
+        public IActionResult CreateToken([FromBody]AccountRegisterLoginViewModel model)
         {
             IActionResult response = Unauthorized();
-            var user = Authenticate(login);
-
-            if (user != null)
+            var userViewModel = _iAuthorizedService.Authenticate(model);
+            if (userViewModel != null)
             {
-                var tokenString = BuildToken(user);
+                var tokenString = _iAuthorizedService.BuildToken(userViewModel);
                 response = Ok(new { token = tokenString });
             }
 
@@ -102,9 +50,11 @@ namespace LetsMeet.Api.Controllers
         }
 
         [HttpGet, Authorize]
-        public IActionResult GetOk()
+        public IActionResult GetEmailOfLogInUser()
         {
-            return Ok();
+            var currentUser = HttpContext.User;
+            var email = currentUser.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+            return Ok(email);
         }
     }
 }
