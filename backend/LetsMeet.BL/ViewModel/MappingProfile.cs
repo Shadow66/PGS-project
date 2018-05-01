@@ -10,6 +10,8 @@ namespace LetsMeet.BL.ViewModel
             CreateMap<EventDto, EventViewModel>();
             CreateMap<EventViewModel, EventDto>();
             CreateMap<EventWithHostNameDto, EventWithHostNameViewModel>();
+            CreateMap<AccountRegisterLoginViewModel, AccountRegisterLoginDto>();
+            CreateMap<AccountRegisterLoginDto, AccountRegisterLoginViewModel>();
         }
     }
 }

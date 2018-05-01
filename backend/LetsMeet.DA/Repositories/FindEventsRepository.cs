@@ -4,8 +4,6 @@ using LetsMeet.DA.Dto;
 using LetsMeet.DA.Interfaces;
 using AutoMapper;
 using LetsMeet.DA.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace LetsMeet.DA.Repositories
 {
@@ -21,19 +19,14 @@ namespace LetsMeet.DA.Repositories
         }
 
         public IEnumerable<EventDto> GetAll()
-        {
-            //var result1 = _context.Events.First()
-            //var result2 = _mapper.Map<EventDto>(result1);
-
+        { 
             var result = _context.Events.ToList();
-            result.ForEach(i => i.Description = "");
             return _mapper.Map<List<EventDto>>(result);
         }
 
         public IEnumerable<EventDto> GetByTitle(string title)
         {
             var events = _context.Events.Where(x => x.Title == title).ToList();
-            events.ForEach(i => i.Description = "");
             var result = _mapper.Map<IEnumerable<EventDto>>(events);
             return result;
         }

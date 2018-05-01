@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LetsMeet.Api.Controllers
 {
-    //[Produces("application/json")]
-    //[Route("api/Events")]
     [Route("api/[controller]")]
     public class EventsController : Controller
     {
@@ -37,8 +35,12 @@ namespace LetsMeet.Api.Controllers
             return Ok(_iFindEventsService.GetEventDescription(id));
         }
 
+<<<<<<< HEAD
 
         [HttpGet("GetEventsWithHostNames")]
+=======
+        [HttpGet("GetEventsWithHostNames"), Authorize]
+>>>>>>> #12-Authorization
         public IActionResult GetEventsWithHostNames()
         {
             return Ok(_iFindEventsService.GetEventsWithHostNames());

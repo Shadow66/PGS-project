@@ -1,42 +1,41 @@
-﻿using LetsMeet.BL.Interfaces;
+﻿using AutoMapper;
+using LetsMeet.BL.Interfaces;
 using LetsMeet.BL.ViewModel;
 using LetsMeet.DA.Dto;
 using LetsMeet.DA.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LetsMeet.BL.Services
 {
     public class AuthorizeService : IAuthorizeService
     {
         private readonly IAuthorizeRepository _authorizeRepository;
+        private readonly IMapper _mapper;
 
-        public AuthorizeService(IAuthorizeRepository findEventsRepository)
+        public AuthorizeService(IAuthorizeRepository findEventsRepository, IMapper mapper)
         {
             _authorizeRepository = findEventsRepository;
+            _mapper = mapper;
         }
 
         public void Create(AccountRegisterLoginViewModel model)
         {
-            var accountDto = new AccountRegisterLoginDto
-            {
-                Email = model.Email,
-                Password = model.Password
-            };
-
+            var accountDto = _mapper.Map<AccountRegisterLoginDto>(model);
             _authorizeRepository.CreateAsync(accountDto);
         }
 
-        public void LogIn(AccountRegisterLoginViewModel model)
+        public AccountRegisterLoginViewModel Authenticate(AccountRegisterLoginViewModel accountRegisterLoginViewModel)
         {
-            var accountDto = new AccountRegisterLoginDto
-            {
-                Email = model.Email,
-                Password = model.Password
-            };
+            var accountRegisterLoginDto = _mapper.Map<AccountRegisterLoginDto>(accountRegisterLoginViewModel);
+            var userDto = _authorizeRepository.Authenticate(accountRegisterLoginDto);
+            var result = _mapper.Map<AccountRegisterLoginViewModel>(userDto.Result);
+            return result;
+        }
 
-            _authorizeRepository.LogInAsync(accountDto);
+        public string BuildToken(AccountRegisterLoginViewModel accountRegisterViewModel)
+        {
+            var userDto = _mapper.Map<AccountRegisterLoginDto>(accountRegisterViewModel);
+            var token = _authorizeRepository.BuildToken(userDto);
+            return token;
         }
     }
 }
