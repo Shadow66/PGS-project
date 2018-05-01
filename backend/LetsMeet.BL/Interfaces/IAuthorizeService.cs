@@ -8,6 +8,7 @@ namespace LetsMeet.BL.Interfaces
     public interface IAuthorizeService
     {
         void Create(AccountRegisterLoginViewModel model);
-        void LogIn(AccountRegisterLoginViewModel model);
+        AccountRegisterLoginViewModel Authenticate(AccountRegisterLoginViewModel accountRegisterLoginViewModel);
+        string BuildToken(AccountRegisterLoginViewModel accountRegisterLoginDto);
     }
 }
