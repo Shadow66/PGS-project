@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './shared/services/auth.service';
 import { SearchService } from './shared/services/search.service';
 import { ApiService } from './shared/services/api.service';
+import { PopularEventsComponent } from './components/popular-events/popular-events.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { ApiService } from './shared/services/api.service';
     EventComponent,
     FindComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    PopularEventsComponent
   ],
   imports: [
     BrowserModule,

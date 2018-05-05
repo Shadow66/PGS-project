@@ -20,4 +20,9 @@ export class SearchService {
       this.apiService.url + this.url + 'GetNumberEventParticipants/' + eventId
     );
   }
+  getPopularEvents(): Observable<EventListModel[]> {
+    return this._http.get<EventListModel[]>(
+      this.apiService.url + this.url + 'GetMostPopularEvents/'
+    );
+  }
 }
