@@ -22,12 +22,6 @@ export class TestService {
   }
 
   authTest() {
-    const headers = new HttpHeaders({
-      Authorization: 'Bearer ' + this.authService.token['token'],
-      'Content-Type': 'application/json'
-    });
-    return this._http.get(this.apiService.url + 'Authorize', {
-      headers: headers
-    });
+    return this._http.get(this.apiService.url + 'Authorize');
   }
 }

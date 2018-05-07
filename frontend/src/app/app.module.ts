@@ -26,6 +26,9 @@ import { SearchService } from './shared/services/search.service';
 import { ApiService } from './shared/services/api.service';
 import { PopularEventsComponent } from './components/popular-events/popular-events.component';
 import { TestService } from './shared/services/test.service';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth/token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +56,12 @@ import { TestService } from './shared/services/test.service';
     AuthService,
     SearchService,
     AuthGuardService,
-    TestService
+    TestService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
