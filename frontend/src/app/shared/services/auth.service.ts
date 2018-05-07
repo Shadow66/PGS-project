@@ -22,7 +22,8 @@ export class AuthService {
       email,
       password
     );
-    return this._http.post(this.apiService.url + this.url, user);
+    return this._http.post(this.apiService.url + this.url, user)
+    .subscribe((token: string) => this.token = token, error => console.log(error));
   }
 
   logout() {

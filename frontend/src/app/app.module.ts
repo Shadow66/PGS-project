@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AuthService } from './shared/services/auth.service';
+import { AuthGuardService } from './shared/services/auth-guard.service';
 import { SearchService } from './shared/services/search.service';
 import { ApiService } from './shared/services/api.service';
 import { PopularEventsComponent } from './components/popular-events/popular-events.component';
@@ -47,7 +48,7 @@ import { PopularEventsComponent } from './components/popular-events/popular-even
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ApiService, AuthService, SearchService],
+  providers: [ApiService, AuthService, SearchService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
