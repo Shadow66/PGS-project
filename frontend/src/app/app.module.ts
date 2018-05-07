@@ -15,8 +15,8 @@ import { EventsListComponent } from './pages/find/events-list/events-list.compon
 import { EventComponent } from './pages/find/events-list/event/event.component';
 
 import { FindComponent } from './pages/find/find.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -36,8 +36,8 @@ import { PopularEventsComponent } from './components/popular-events/popular-even
     EventsListComponent,
     EventComponent,
     FindComponent,
-    SignupComponent,
-    SigninComponent,
+    SignUpComponent,
+    SignInComponent,
     PopularEventsComponent
   ],
   imports: [

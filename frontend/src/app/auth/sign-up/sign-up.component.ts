@@ -3,11 +3,11 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignUpComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
 
@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   onSignUp(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.signupUser(email, password).subscribe(
+    this.authService.signUpUser(email, password).subscribe(
       response => console.log(response),
       error => console.log(error)
     );
