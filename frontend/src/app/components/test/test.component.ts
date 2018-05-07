@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../shared/services/api.service';
+import { TestService } from '../../shared/services/test.service';
 
 @Component({
   selector: 'app-test',
@@ -7,12 +8,13 @@ import { ApiService } from '../../shared/services/api.service';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService,
+  private testService: TestService) {}
 
   ngOnInit() {}
   onPostTest() {
     // JSON.stringify potrzebne jest gdy przesylamy czysty string
-    this.apiService
+    this.testService
       .postTest(JSON.stringify('fsdf'))
       .subscribe(
         response => console.log(response),
@@ -20,8 +22,16 @@ export class TestComponent implements OnInit {
       );
   }
   onGetTest() {
-    this.apiService
+    this.testService
       .getTest()
+      .subscribe(
+        response => console.log(response),
+        error => console.log(error)
+      );
+  }
+  onAuthTest() {
+    this.testService
+      .authTest()
       .subscribe(
         response => console.log(response),
         error => console.log(error)

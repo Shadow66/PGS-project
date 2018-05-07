@@ -20,12 +20,12 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 import { AuthService } from './shared/services/auth.service';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { SearchService } from './shared/services/search.service';
 import { ApiService } from './shared/services/api.service';
 import { PopularEventsComponent } from './components/popular-events/popular-events.component';
+import { TestService } from './shared/services/test.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +48,13 @@ import { PopularEventsComponent } from './components/popular-events/popular-even
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ApiService, AuthService, SearchService, AuthGuardService],
+  providers: [
+    ApiService,
+    AuthService,
+    SearchService,
+    AuthGuardService,
+    TestService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
