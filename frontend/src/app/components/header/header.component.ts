@@ -7,6 +7,7 @@ import { AuthService } from '../../shared/services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  show = false;
 
   constructor(public authService: AuthService) { }
 
@@ -14,5 +15,9 @@ export class HeaderComponent implements OnInit {
   }
   onLogout() {
     this.authService.logout();
+  }
+
+  toggleCollapse() {
+    this.show = !this.show;
   }
 }
