@@ -15,16 +15,20 @@ import { EventsListComponent } from './pages/find/events-list/events-list.compon
 import { EventComponent } from './pages/find/events-list/event/event.component';
 
 import { FindComponent } from './pages/find/find.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 import { AuthService } from './shared/services/auth.service';
+import { AuthGuardService } from './shared/services/auth-guard.service';
 import { SearchService } from './shared/services/search.service';
 import { ApiService } from './shared/services/api.service';
 import { PopularEventsComponent } from './components/popular-events/popular-events.component';
+import { TestService } from './shared/services/test.service';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth/token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,8 +40,8 @@ import { PopularEventsComponent } from './components/popular-events/popular-even
     EventsListComponent,
     EventComponent,
     FindComponent,
-    SignupComponent,
-    SigninComponent,
+    SignUpComponent,
+    SignInComponent,
     PopularEventsComponent
   ],
   imports: [
@@ -47,7 +51,18 @@ import { PopularEventsComponent } from './components/popular-events/popular-even
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ApiService, AuthService, SearchService],
+  providers: [
+    ApiService,
+    AuthService,
+    SearchService,
+    AuthGuardService,
+    TestService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
