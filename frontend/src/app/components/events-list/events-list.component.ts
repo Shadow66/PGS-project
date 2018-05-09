@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
-import { EventListModel } from '../../../shared/models/event.model';
-import { SearchService } from '../../../shared/services/search.service';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { EventListModel } from '../../shared/models/event.model';
+import { SearchService } from '../../shared/services/search.service';
 
 @Component({
   selector: 'app-events-list',
@@ -10,15 +10,12 @@ import { SearchService } from '../../../shared/services/search.service';
 export class EventsListComponent implements OnInit, OnChanges {
   events: EventListModel[] = [];
   @Input() keyword: string;
-  constructor(
-    private searchService: SearchService) { }
+  constructor(private searchService: SearchService) {}
 
-  ngOnInit() {
-  }
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnInit() {}
+  ngOnChanges() {
     this.searchService
       .getEvents(this.keyword)
       .subscribe(events => (this.events = events), error => console.log(error));
   }
 }
-

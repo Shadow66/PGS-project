@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationUserModel } from '../models/authenticatonUser.model';
 import { Router } from '@angular/router';
@@ -7,11 +6,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private apiService: ApiService,
-    private _http: HttpClient,
-    private router: Router
-  ) {}
+  constructor(private _http: HttpClient, private router: Router) {}
   url = 'Authorize';
 
   public getToken(): string {
@@ -28,14 +23,14 @@ export class AuthService {
       email,
       password
     );
-    return this._http.post(this.apiService.url + this.url + '/Register', user);
+    return this._http.post(this.url + '/Register', user);
   }
   signInUser(email: string, password: string) {
     const user: AuthenticationUserModel = new AuthenticationUserModel(
       email,
       password
     );
-    return this._http.post(this.apiService.url + this.url, user).subscribe(
+    return this._http.post(this.url, user).subscribe(
       (token: string) => {
         this.router.navigate(['/']);
         localStorage.setItem('token', token['token']);
@@ -48,6 +43,4 @@ export class AuthService {
     localStorage.clear();
     this.router.navigate(['/']);
   }
-
-
 }

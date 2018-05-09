@@ -7,11 +7,9 @@ import { AuthService } from '../../shared/services/auth.service';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
+  constructor(private authService: AuthService) {}
 
-  constructor(private authService: AuthService) { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSignIn(form: NgForm) {
     const email = form.value.email;

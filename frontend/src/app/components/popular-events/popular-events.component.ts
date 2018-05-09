@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { EventListModel } from '../../shared/models/event.model';
 import { SearchService } from '../../shared/services/search.service';
 
@@ -7,15 +7,13 @@ import { SearchService } from '../../shared/services/search.service';
   templateUrl: './popular-events.component.html',
   styleUrls: ['./popular-events.component.css']
 })
-export class PopularEventsComponent implements OnInit, OnChanges {
+export class PopularEventsComponent implements OnInit {
   events: EventListModel[] = [];
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService) {}
 
   ngOnInit() {
     this.searchService
       .getPopularEvents()
       .subscribe(events => (this.events = events), error => console.log(error));
   }
-  ngOnChanges(changes: SimpleChanges) {}
-
 }
