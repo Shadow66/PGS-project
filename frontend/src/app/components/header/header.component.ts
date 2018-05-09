@@ -9,10 +9,9 @@ import { AuthService } from '../../shared/services/auth.service';
 export class HeaderComponent implements OnInit {
   show = false;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   onLogout() {
     this.authService.logout();
   }

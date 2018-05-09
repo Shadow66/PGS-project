@@ -8,9 +8,8 @@ describe('PopularEventsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PopularEventsComponent ]
-    })
-    .compileComponents();
+      declarations: [PopularEventsComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -8,17 +8,17 @@ import { AuthService } from '../../shared/services/auth.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  constructor(private authService: AuthService) {}
 
-  constructor(private authService: AuthService) { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
   onSignUp(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.signUpUser(email, password).subscribe(
-      response => console.log(response),
-      error => console.log(error)
-    );
+    this.authService
+      .signUpUser(email, password)
+      .subscribe(
+        response => console.log(response),
+        error => console.log(error)
+      );
   }
 }

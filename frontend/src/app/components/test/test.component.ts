@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../shared/services/api.service';
 import { TestService } from '../../shared/services/test.service';
 
 @Component({
@@ -8,8 +7,7 @@ import { TestService } from '../../shared/services/test.service';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
-  constructor(private apiService: ApiService,
-  private testService: TestService) {}
+  constructor(private testService: TestService) {}
 
   ngOnInit() {}
   onPostTest() {

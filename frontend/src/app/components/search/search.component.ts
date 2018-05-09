@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../shared/services/api.service';
 import { EventListModel } from '../../shared/models/event.model';
-import { SearchService } from '../../shared/services/search.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({

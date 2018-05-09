@@ -11,8 +11,8 @@ import { TestComponent } from './components/test/test.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
 
-import { EventsListComponent } from './pages/find/events-list/events-list.component';
-import { EventComponent } from './pages/find/events-list/event/event.component';
+import { EventsListComponent } from './components/events-list/events-list.component';
+import { EventComponent } from './components/event/event.component';
 
 import { FindComponent } from './pages/find/find.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
@@ -23,12 +23,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './shared/services/auth.service';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { SearchService } from './shared/services/search.service';
-import { ApiService } from './shared/services/api.service';
 import { PopularEventsComponent } from './components/popular-events/popular-events.component';
 import { TestService } from './shared/services/test.service';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './auth/token.interceptor';
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
+import { ApiInterceptor } from './shared/interceptors/api.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,15 +52,19 @@ import { TokenInterceptor } from './auth/token.interceptor';
     ReactiveFormsModule
   ],
   providers: [
-    ApiService,
     AuthService,
     SearchService,
     AuthGuardService,
     TestService,
     {
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

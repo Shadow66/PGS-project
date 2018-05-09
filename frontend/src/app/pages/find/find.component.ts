@@ -1,8 +1,7 @@
-import { Component, OnInit, AfterContentChecked, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EventListModel } from '../../shared/models/event.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { SearchService } from '../../shared/services/search.service';
-import { ApiService } from '../../shared/services/api.service';
 
 @Component({
   selector: 'app-find',
@@ -11,10 +10,7 @@ import { ApiService } from '../../shared/services/api.service';
 })
 export class FindComponent implements OnInit {
   keyword: string;
-  constructor(
-    private apiService: ApiService,
-    private route: ActivatedRoute,
-  ) {
+  constructor(private route: ActivatedRoute) {
     this.route.params.subscribe((params: Params) => {
       if (params['keyword'] === undefined) {
         this.keyword = '';
@@ -24,6 +20,5 @@ export class FindComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }
