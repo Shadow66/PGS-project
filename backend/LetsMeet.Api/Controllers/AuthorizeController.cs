@@ -18,7 +18,6 @@ namespace LetsMeet.Api.Controllers
         {
             _iAuthorizedService = iAuthorizedService;
             _config = config;
-
         }
 
        [HttpPost("Register")]
@@ -36,17 +35,14 @@ namespace LetsMeet.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult CreateToken([FromBody]AccountRegisterLoginViewModel model)
+        public IActionResult Authenticate([FromBody]AccountRegisterLoginViewModel model)
         {
-            IActionResult response = Unauthorized();
-            var userViewModel = _iAuthorizedService.Authenticate(model);
-            if (userViewModel != null)
+            var tokenstring = _iAuthorizedService.CreateToken(model);
+            if(tokenstring == null)
             {
-                var tokenString = _iAuthorizedService.BuildToken(userViewModel);
-                response = Ok(new { token = tokenString });
+                return Unauthorized();
             }
-
-            return response;
+            return Ok(new { token = tokenstring.Result});
         }
 
         [HttpGet, Authorize]

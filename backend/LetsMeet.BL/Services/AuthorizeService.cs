@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using LetsMeet.BL.Interfaces;
 using LetsMeet.BL.ViewModel;
 using LetsMeet.DA.Dto;
@@ -17,25 +18,17 @@ namespace LetsMeet.BL.Services
             _mapper = mapper;
         }
 
-        public void Create(AccountRegisterLoginViewModel model)
+        public async Task Create(AccountRegisterLoginViewModel model)
         {
             var accountDto = _mapper.Map<AccountRegisterLoginDto>(model);
-            _authorizeRepository.CreateAsync(accountDto);
+            await _authorizeRepository.CreateAsync(accountDto);
         }
 
-        public AccountRegisterLoginViewModel Authenticate(AccountRegisterLoginViewModel accountRegisterLoginViewModel)
+        public Task<string> CreateToken(AccountRegisterLoginViewModel accountRegisterLoginViewModel)
         {
             var accountRegisterLoginDto = _mapper.Map<AccountRegisterLoginDto>(accountRegisterLoginViewModel);
-            var userDto = _authorizeRepository.Authenticate(accountRegisterLoginDto);
-            var result = _mapper.Map<AccountRegisterLoginViewModel>(userDto.Result);
+            var result = _authorizeRepository.CreateToken(accountRegisterLoginDto);
             return result;
-        }
-
-        public string BuildToken(AccountRegisterLoginViewModel accountRegisterViewModel)
-        {
-            var userDto = _mapper.Map<AccountRegisterLoginDto>(accountRegisterViewModel);
-            var token = _authorizeRepository.BuildToken(userDto);
-            return token;
         }
     }
 }

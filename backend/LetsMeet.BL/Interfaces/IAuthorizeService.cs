@@ -2,13 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LetsMeet.BL.Interfaces
 {
     public interface IAuthorizeService
     {
-        void Create(AccountRegisterLoginViewModel model);
-        AccountRegisterLoginViewModel Authenticate(AccountRegisterLoginViewModel accountRegisterLoginViewModel);
-        string BuildToken(AccountRegisterLoginViewModel accountRegisterLoginDto);
+        Task Create(AccountRegisterLoginViewModel model);
+        Task<string> CreateToken(AccountRegisterLoginViewModel accountRegisterLoginViewModel);
     }
 }

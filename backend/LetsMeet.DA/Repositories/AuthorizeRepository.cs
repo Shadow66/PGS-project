@@ -44,22 +44,22 @@ namespace LetsMeet.DA.Repositories
             var result = await _userManager.CreateAsync(user, model.Password);
         }
 
-        public async Task<AccountRegisterLoginDto> Authenticate(AccountRegisterLoginDto accountRegisterLoginDto)
+        public async Task<string> CreateToken(AccountRegisterLoginDto accountRegisterLoginDto)
         {
-            var user = _context.Users.SingleOrDefault(n => n.Email == accountRegisterLoginDto.Email);
-            if(user != null)
+            var user = await _userManager.FindByEmailAsync(accountRegisterLoginDto.Email);
+            if (user == null)
             {
-                var signInResult = await _signManager.CheckPasswordSignInAsync(user, accountRegisterLoginDto.Password, false);
-                if (!signInResult.Succeeded)
-                {
-                    user = null;
-                }
+                return null;
             }
-            var result = _mapper.Map<AccountRegisterLoginDto>(user);
-            return result;
+            var signInResult = await _signManager.CheckPasswordSignInAsync(user, accountRegisterLoginDto.Password, false);
+            if (!signInResult.Succeeded)
+            {
+                return null;
+            }
+            return BuildToken(accountRegisterLoginDto);
         }
 
-        public string BuildToken(AccountRegisterLoginDto user)
+        private string BuildToken(AccountRegisterLoginDto user)
         {
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
