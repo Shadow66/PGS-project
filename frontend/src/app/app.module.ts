@@ -29,6 +29,7 @@ import { TestService } from './shared/services/test.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { ApiInterceptor } from './shared/interceptors/api.interceptor';
+import { EventDetailsComponent } from './pages/event-details/event-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { ApiInterceptor } from './shared/interceptors/api.interceptor';
     FindComponent,
     SignUpComponent,
     SignInComponent,
-    PopularEventsComponent
+    PopularEventsComponent,
+    EventDetailsComponent
   ],
   imports: [
     BrowserModule,

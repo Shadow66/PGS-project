@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventListModel } from '../../shared/models/event.model';
+import { EventListModel } from '../../shared/models/eventList.model';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
