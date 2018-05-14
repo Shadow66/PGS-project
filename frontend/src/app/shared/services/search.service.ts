@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthenticationUserModel } from '../../shared/models/authenticatonUser.model';
+import { AuthenticationUserModel } from '../../shared/models/authenticationUser.model';
 import { EventListModel } from '../../shared/models/event.model';
 import { Observable } from 'rxjs/Observable';
 
