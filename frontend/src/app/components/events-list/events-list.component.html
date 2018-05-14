@@ -1,5 +1,18 @@
 <div class="row">
   <div class="col">
+      <div class="btn-group float-right">
+          <button class="btn btn-secondary dropdown-toggle " type="button" (click)="toggleCollapse()" >
+            Sort by
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"  [class.show]="showSortList">
+            <a class="dropdown-item" (click)="onSortAsc()" (click)="toggleCollapse()" style="cursor: pointer;">Date ascending</a>
+            <a class="dropdown-item" (click)="onSortDesc()" (click)="toggleCollapse()" style="cursor: pointer;">Date descending</a>
+          </div>
+        </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
     <app-event *ngFor="let event of events" [event]="event"></app-event>
   </div>
 </div>

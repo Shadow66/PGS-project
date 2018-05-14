@@ -9,6 +9,7 @@ import { SearchService } from '../../shared/services/search.service';
 })
 export class EventsListComponent implements OnInit, OnChanges {
   events: EventListModel[] = [];
+  showSortList = false;
   @Input() keyword: string;
   constructor(private searchService: SearchService) {}
 
@@ -18,4 +19,32 @@ export class EventsListComponent implements OnInit, OnChanges {
       .getEvents(this.keyword)
       .subscribe(events => (this.events = events), error => console.log(error));
   }
+  toggleCollapse() {
+    this.showSortList = !this.showSortList;
+  }
+  onSortAsc() {
+    this.events.sort(this.sortAsc);
+  }
+  sortAsc(e1: EventListModel, e2: EventListModel) {
+    if (e1.startDate > e2.startDate) {
+      return 1;
+    } else if (e1.startDate === e2.startDate) {
+      return 0;
+    } else {
+      return -1;
+    }
+  }
+  onSortDesc() {
+    this.events.sort(this.sortDesc);
+  }
+
+  sortDesc(e1: EventListModel, e2: EventListModel) {
+  if (e1.startDate < e2.startDate) {
+    return 1;
+  } else if (e1.startDate === e2.startDate) {
+    return 0;
+  } else {
+    return -1;
+  }
+}
 }
