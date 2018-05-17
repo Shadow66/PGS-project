@@ -78,11 +78,20 @@ namespace LetsMeet.DA.Repositories
             _context.SaveChanges();
         }
 
-        public void DeleteEvent(int id)
+        public void DeleteEvent(int id, string email)
         {
             var eventInDb = _context.Events.SingleOrDefault(n => n.Id == id);
-            _context.Events.Remove(eventInDb);
-            _context.SaveChanges();
+            var user = _context.Users.Single(u => u.Email == email);
+          
+           
+            if (eventInDb.HostId == user.Id)
+            {
+                var clearParticipants = _context.Participants.Where(e => e.EventId == eventInDb.Id);
+                _context.Participants.RemoveRange(clearParticipants);
+
+                _context.Events.Remove(eventInDb);
+                _context.SaveChanges();
+            }
         }
 
         public List<EventWithHostNameDto> GetMostPopularEvents()

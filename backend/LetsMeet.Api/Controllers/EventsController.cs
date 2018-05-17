@@ -81,10 +81,11 @@ namespace LetsMeet.Api.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         public IActionResult DeleteEvent(int id)
         {
-            _iFindEventsService.DeleteEvent(id);
+            var email = HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+            _iFindEventsService.DeleteEvent(id, email);
             return Ok();
         }
 
