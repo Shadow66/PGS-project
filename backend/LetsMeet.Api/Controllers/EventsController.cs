@@ -67,6 +67,12 @@ namespace LetsMeet.Api.Controllers
             return Ok(_iFindEventsService.GetMostPopularEvents());
         }
 
+        [HttpGet("GetUsersAssignedToEvent/{id}")]
+        public IActionResult GetUsersAssignedToEvent(int id)
+        {
+            return Ok(_iFindEventsService.GetUsersAssignedToEvent(id));
+        }
+
         [HttpPut, Authorize]
         public IActionResult UpdateEvent([FromBody] EventViewModel updated)
         {

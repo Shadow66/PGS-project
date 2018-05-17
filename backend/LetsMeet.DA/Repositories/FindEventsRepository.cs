@@ -113,6 +113,15 @@ namespace LetsMeet.DA.Repositories
             return result;
         }
 
+        public IEnumerable<string> GetUsersAssignedToEvent(int id)
+        {
+            var result = _context.Participants
+                .Where(p => p.EventId == id)
+                .Include(u => u.User)
+                .Select(s => s.User.UserName);
+            return result;
+        }
+
         public void JoinToEvent(int id, string email)
         {
             var user = _context.Users.Single(u => u.Email == email);

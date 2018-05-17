@@ -14,6 +14,7 @@ namespace LetsMeet.BL.Interfaces
         List<EventWithHostNameViewModel> GetEventsWithHostNames();
         List<EventWithHostNameViewModel> GetEventsWithHostNames(string title);
         EventWithHostNameViewModel GetEventWithHostName(int id);
+        IEnumerable<string> GetUsersAssignedToEvent(int id);
         int GetNumberEventParticipants(int id);
         List<EventWithHostNameViewModel> GetMostPopularEvents();
         void JoinToEvent(int id, string email);

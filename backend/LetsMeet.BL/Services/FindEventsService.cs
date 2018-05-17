@@ -68,6 +68,11 @@ namespace LetsMeet.BL.Services
             return _mapper.Map<List<EventWithHostNameViewModel>>(result);
         }
 
+        public IEnumerable<string> GetUsersAssignedToEvent(int id)
+        {
+            return _findEventsRepository.GetUsersAssignedToEvent(id);
+        }
+
         public void UpdateEvent(EventViewModel updated, string email)
         {
             var eventDtoObject =_mapper.Map< EventDto > (updated);
