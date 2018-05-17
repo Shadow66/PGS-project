@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EventListModel } from '../../shared/models/event.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { SearchService } from '../../shared/services/search.service';
 

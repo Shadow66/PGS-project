@@ -1,0 +1,24 @@
+<div class="main container">
+  <div class="row">
+    <div class="col">
+        Start: {{ event.startDate | date: 'dd-mm-yyyy, hh:mm a' }} <br>
+        End: {{ event.endDate | date: 'dd-mm-yyyy, hh:mm a' }} <br>
+        <h4>  {{ event.title }}<br></h4>
+        organized by {{ event.hostName }}
+    </div>
+    <div class="col">
+    </div>
+    <div class="col">
+      Join
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col">
+      {{ event.description }}
+    </div>
+    <div class="col">
+      Map
+    </div>
+  </div>
+</div>

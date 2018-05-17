@@ -6,6 +6,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { TestComponent } from './components/test/test.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
+import { EventDetailsComponent } from './pages/event-details/event-details.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,11 @@ const routes: Routes = [
     path: 'test',
     component: TestComponent,
     canActivate: [AuthGuardService]
-  }
+  },
+  {
+    path: 'event/:id',
+    component: EventDetailsComponent
+  },
 ];
 
 @NgModule({
