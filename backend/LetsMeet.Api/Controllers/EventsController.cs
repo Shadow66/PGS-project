@@ -61,14 +61,15 @@ namespace LetsMeet.Api.Controllers
             return Ok(_iFindEventsService.GetMostPopularEvents());
         }
 
-        [HttpPut]
+        [HttpPut, Authorize]
         public IActionResult UpdateEvent([FromBody] EventViewModel updated)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            _iFindEventsService.UpdateEvent(updated);
+            var email = HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+            _iFindEventsService.UpdateEvent(updated, email);
 
             return Ok();
         }

@@ -7,7 +7,7 @@ namespace LetsMeet.DA.Interfaces
     {
         IEnumerable<EventDto> GetAll();
         IEnumerable<EventDto> GetByTitle(string title);
-        void UpdateEvent(EventDto updated);
+        void UpdateEvent(EventDto updated, string email);
         void AddEvent(EventDto newEvent, string email);
         void DeleteEvent(int id, string email);
         string GetEventDescription(int id);

@@ -60,13 +60,16 @@ namespace LetsMeet.DA.Repositories
         }
 
 
-        public void UpdateEvent(EventDto updated)
+        public void UpdateEvent(EventDto updated, string email)
         {
             var eventObject =_mapper.Map<Event>(updated);
             var eventInDb = _context.Events.Single(n => n.Id == eventObject.Id);
-            _context.Entry(eventInDb).CurrentValues.SetValues(eventObject);
-        
-            _context.SaveChanges();
+            var user = _context.Users.Single(u => u.Email == email);
+            if(eventInDb.HostId == user.Id)
+            {
+                _context.Entry(eventInDb).CurrentValues.SetValues(eventObject);
+                _context.SaveChanges();
+            }
         }
 
         public void AddEvent(EventDto newEvent, string email)
@@ -83,7 +86,6 @@ namespace LetsMeet.DA.Repositories
             var eventInDb = _context.Events.SingleOrDefault(n => n.Id == id);
             var user = _context.Users.Single(u => u.Email == email);
           
-           
             if (eventInDb.HostId == user.Id)
             {
                 var clearParticipants = _context.Participants.Where(e => e.EventId == eventInDb.Id);
