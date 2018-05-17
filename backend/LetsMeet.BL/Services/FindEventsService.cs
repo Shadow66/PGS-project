@@ -78,5 +78,10 @@ namespace LetsMeet.BL.Services
         {
             _findEventsRepository.DeleteEvent(id);
         }
+
+        public void JoinToEvent(int id, string email)
+        {
+            _findEventsRepository.JoinToEvent(id, email);
+        }
     }
 }

@@ -52,7 +52,5 @@ namespace LetsMeet.Api.Controllers
             var email = currentUser.Claims.First(c => c.Type == ClaimTypes.Email).Value;
             return Ok(email);
         }
-
-
     }
 }

@@ -92,5 +92,20 @@ namespace LetsMeet.DA.Repositories
             var result = _mapper.Map<List<EventWithHostNameDto>>(popularEvents);
             return result;
         }
+
+        public void JoinToEvent(int id, string email)
+        {
+            var user = _context.Users.Single(u => u.Email == email);
+            var selectedEvent = _context.Events.Single(e => e.Id == id);
+            var participant = new Participant
+            {
+                Event = selectedEvent,
+                EventId = selectedEvent.Id,
+                User = user,
+                UserId = user.Id
+            };
+            _context.Participants.Add(participant);
+            _context.SaveChanges();
+        }
     }
 }

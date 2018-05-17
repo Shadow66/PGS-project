@@ -11,6 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.Extensions.Configuration;
 using System.Security.Claims;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 
 namespace LetsMeet.DA.Repositories
 {
@@ -76,6 +77,5 @@ namespace LetsMeet.DA.Repositories
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
     }
 }

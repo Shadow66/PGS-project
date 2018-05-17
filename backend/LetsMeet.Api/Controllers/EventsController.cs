@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using LetsMeet.BL.Interfaces;
 using LetsMeet.BL.ViewModel;
 using Microsoft.AspNetCore.Authorization;
@@ -82,6 +84,14 @@ namespace LetsMeet.Api.Controllers
         public IActionResult DeleteEvent(int id)
         {
             _iFindEventsService.DeleteEvent(id);
+            return Ok();
+        }
+
+        [HttpPost("JoinToEvent/{id}"), Authorize]
+        public IActionResult JoinToEvent(int id)
+        {
+            var email = HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+            _iFindEventsService.JoinToEvent(id, email);
             return Ok();
         }
     }
