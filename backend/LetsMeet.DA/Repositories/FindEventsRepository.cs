@@ -53,6 +53,13 @@ namespace LetsMeet.DA.Repositories
             return result;
         }
 
+        public EventWithHostNameDto GetEventWithHostName(int id)
+        {
+            var eventInDb = _context.Events.Where(n => n.Id == id).Include(u => u.User).ToList();
+            var result = _mapper.Map<List<EventWithHostNameDto>>(eventInDb);
+            return result.First();
+        }
+
         public int GetNumberEventParticipants(int id)
         {
             int result = _context.Participants.Count(n => n.EventId == id);

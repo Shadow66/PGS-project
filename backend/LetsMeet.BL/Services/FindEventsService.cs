@@ -32,6 +32,7 @@ namespace LetsMeet.BL.Services
             return _mapper.Map<List<EventViewModel>>(result);
         }
 
+
         public string GetEventDescription(int id)
         {
             var result = _findEventsRepository.GetEventDescription(id);
@@ -48,6 +49,12 @@ namespace LetsMeet.BL.Services
         {
             var result = _findEventsRepository.GetEventsWithHostNames(title);
             return _mapper.Map<List<EventWithHostNameViewModel>>(result);
+        }
+
+        public EventWithHostNameViewModel GetEventWithHostName(int id)
+        {
+            var result = _findEventsRepository.GetEventWithHostName(id);
+            return _mapper.Map<EventWithHostNameViewModel>(result);
         }
 
         public int GetNumberEventParticipants(int id)

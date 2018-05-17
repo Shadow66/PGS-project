@@ -13,6 +13,7 @@ namespace LetsMeet.DA.Interfaces
         string GetEventDescription(int id);
         List<EventWithHostNameDto> GetEventsWithHostNames();
         List<EventWithHostNameDto> GetEventsWithHostNames(string title);
+        EventWithHostNameDto GetEventWithHostName(int id);
         int GetNumberEventParticipants(int id);
         List<EventWithHostNameDto> GetMostPopularEvents();
         void JoinToEvent(int eventId, string email);
