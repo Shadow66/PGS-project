@@ -8,7 +8,7 @@ namespace LetsMeet.BL.Interfaces
         List<EventViewModel> GetAll();
         List<EventViewModel> GetByTitle(string title);
         void UpdateEvent(EventViewModel updated);
-        void AddEvent(EventViewModel newEvent);
+        void AddEvent(EventViewModel newEvent, string email);
         void DeleteEvent(int id);
         string GetEventDescription(int id);
         List<EventWithHostNameViewModel> GetEventsWithHostNames();

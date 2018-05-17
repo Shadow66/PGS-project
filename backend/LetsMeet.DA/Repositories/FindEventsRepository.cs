@@ -69,9 +69,11 @@ namespace LetsMeet.DA.Repositories
             _context.SaveChanges();
         }
 
-        public void AddEvent(EventDto newEvent)
+        public void AddEvent(EventDto newEvent, string email)
         {
             var eventObject = _mapper.Map<Event>(newEvent);
+            var user = _context.Users.Single(u => u.Email == email);
+            eventObject.HostId = user.Id;
             _context.Events.Add(eventObject);
             _context.SaveChanges();
         }

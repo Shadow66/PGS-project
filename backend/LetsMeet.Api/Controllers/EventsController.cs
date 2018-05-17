@@ -73,10 +73,11 @@ namespace LetsMeet.Api.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public IActionResult AddEvent([FromBody] EventViewModel newEvent)
         {
-            _iFindEventsService.AddEvent(newEvent);
+            var email = HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+            _iFindEventsService.AddEvent(newEvent, email);
             return Ok();
         }
 

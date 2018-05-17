@@ -68,10 +68,10 @@ namespace LetsMeet.BL.Services
         }
 
 
-        public void AddEvent(EventViewModel newEvent)
+        public void AddEvent(EventViewModel newEvent, string email)
         {
             var eventDtoObject = _mapper.Map<EventDto>(newEvent);
-            _findEventsRepository.AddEvent(eventDtoObject);
+            _findEventsRepository.AddEvent(eventDtoObject, email);
         }
 
         public void DeleteEvent(int id)

@@ -8,7 +8,7 @@ namespace LetsMeet.DA.Interfaces
         IEnumerable<EventDto> GetAll();
         IEnumerable<EventDto> GetByTitle(string title);
         void UpdateEvent(EventDto updated);
-        void AddEvent(EventDto newEvent);
+        void AddEvent(EventDto newEvent, string email);
         void DeleteEvent(int id);
         string GetEventDescription(int id);
         List<EventWithHostNameDto> GetEventsWithHostNames();
