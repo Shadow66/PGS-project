@@ -15,7 +15,7 @@ export class EventComponent implements OnInit, OnChanges {
   ngOnInit() {}
   ngOnChanges() {
     this.searchService
-      .getEventParticipantNumber(this.event.id)
+      .getEventParticipantNumber(String(this.event.id))
       .subscribe(
         participants => (this.event.participants = participants),
         error => console.log(error)

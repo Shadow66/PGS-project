@@ -11,7 +11,17 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class EventDetailsComponent implements OnInit {
   id: string;
-  event: EventModel;
+  event: EventModel = new EventModel(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
 
   constructor(
     private route: ActivatedRoute,
@@ -27,9 +37,8 @@ export class EventDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.searchService.getEvent(this.id);
-    // .subscribe(event => (this.event = event), error => console.log(error));
-    this.event = this.searchService.getEvent(this.id);
+    this.searchService
+      .getEvent(this.id)
+      .subscribe(event => (this.event = event), error => console.log(error));
   }
-
 }
