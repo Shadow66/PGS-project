@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { EventModel } from '../../shared/models/event.model';
-import { SearchService } from '../../shared/services/search.service';
 import { EventListModel } from '../../shared/models/eventList.model';
 import { ActivatedRoute, Params } from '@angular/router';
+import { EventService } from '../../shared/services/event.service';
 
 @Component({
   selector: 'app-event-details',
@@ -25,7 +25,7 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private searchService: SearchService
+    private eventService: EventService
   ) {
     this.route.params.subscribe((params: Params) => {
       if (params['id'] === undefined) {
@@ -37,7 +37,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.searchService
+    this.eventService
       .getEvent(this.id)
       .subscribe(event => (this.event = event), error => console.log(error));
   }

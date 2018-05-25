@@ -16,6 +16,8 @@
   <div class="row">
     <div class="col">
       {{ event.description }}
+      <hr>
+      <app-participants-list [eventId]="event.id"></app-participants-list>
     </div>
     <div class="col">
       Map
