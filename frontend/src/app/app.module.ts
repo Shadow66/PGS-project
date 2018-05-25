@@ -30,6 +30,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { ApiInterceptor } from './shared/interceptors/api.interceptor';
 import { EventDetailsComponent } from './pages/event-details/event-details.component';
+import { ParticipantsListComponent } from './components/participants-list/participants-list.component';
+import { ParticipantComponent } from './components/participant/participant.component';
+import { EventService } from './shared/services/event.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,9 @@ import { EventDetailsComponent } from './pages/event-details/event-details.compo
     SignUpComponent,
     SignInComponent,
     PopularEventsComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    ParticipantsListComponent,
+    ParticipantComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,7 @@ import { EventDetailsComponent } from './pages/event-details/event-details.compo
   providers: [
     AuthService,
     SearchService,
+    EventService,
     AuthGuardService,
     TestService,
     {
