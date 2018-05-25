@@ -48,7 +48,7 @@ namespace LetsMeet.DA.Repositories
 
         public List<EventWithHostNameDto> GetEventsWithHostNames(string title)
         {
-            var wantedEvents = _context.Events.Where(n => n.Title == title).Include(u => u.User).ToList();
+            var wantedEvents = _context.Events.Where(n => n.Title.Contains(title)).Include(u => u.User).ToList();
             var result = _mapper.Map<List<EventWithHostNameDto>>(wantedEvents);
             return result;
         }
