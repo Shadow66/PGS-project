@@ -27,7 +27,7 @@ namespace LetsMeet.DA.Repositories
 
         public IEnumerable<EventDto> GetByTitle(string title)
         {
-            var events = _context.Events.Where(x => x.Title == title).ToList();
+            var events = _context.Events.Where(x => x.Title.Contains(title)).ToList();
             var result = _mapper.Map<IEnumerable<EventDto>>(events);
             return result;
         }
