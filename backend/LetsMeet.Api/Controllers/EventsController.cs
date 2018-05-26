@@ -109,5 +109,15 @@ namespace LetsMeet.Api.Controllers
             _iFindEventsService.JoinToEvent(id, email);
             return Ok();
         }
+
+        [HttpGet("IsAssignedToEvent/{id}"), Authorize]
+        public IActionResult IsAssignedToEvent(int id)
+        {
+            var email = HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+            var result =_iFindEventsService.IsAssignedToEvent(id, email);
+            if (result == false)
+                return NotFound();
+            return Ok();
+        }
     }
 }

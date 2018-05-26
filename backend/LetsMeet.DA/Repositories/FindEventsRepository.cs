@@ -136,5 +136,17 @@ namespace LetsMeet.DA.Repositories
             _context.Participants.Add(participant);
             _context.SaveChanges();
         }
+
+        public bool IsAssignedToEvent(int id, string email)
+        {
+            var eventInDb = _context.Events.SingleOrDefault(n => n.Id == id);
+            var user = _context.Users.Single(u => u.Email == email);
+
+            var participant = _context.Participants.SingleOrDefault(n => n.EventId == id && n.UserId == user.Id);
+            if (participant != null)
+                return true;
+            return false;
+
+        }
     }
 }

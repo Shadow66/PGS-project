@@ -18,5 +18,6 @@ namespace LetsMeet.DA.Interfaces
         IEnumerable<string> GetUsersAssignedToEvent(int id);
         List<EventWithHostNameDto> GetMostPopularEvents();
         void JoinToEvent(int eventId, string email);
+        bool IsAssignedToEvent(int id, string email);
     }
 }

@@ -95,5 +95,10 @@ namespace LetsMeet.BL.Services
         {
             _findEventsRepository.JoinToEvent(id, email);
         }
+
+        public bool IsAssignedToEvent(int id, string email)
+        {
+            return _findEventsRepository.IsAssignedToEvent(id, email);
+        }
     }
 }
