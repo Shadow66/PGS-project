@@ -14,4 +14,7 @@ export class EventService {
   getParticipants(id: string): Observable<string> {
     return this._http.get<string>(this.url + 'GetUsersAssignedToEvent/' + id);
   }
+  joinEvent(id: string): Observable<string> {
+    return this._http.post<string>(this.url + 'JoinToEvent/' + id, '');
+  }
 }

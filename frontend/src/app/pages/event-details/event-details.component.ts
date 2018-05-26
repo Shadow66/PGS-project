@@ -41,4 +41,9 @@ export class EventDetailsComponent implements OnInit {
       .getEvent(this.id)
       .subscribe(event => (this.event = event), error => console.log(error));
   }
+  onJoin() {
+    this.eventService
+      .joinEvent(this.id)
+      .subscribe(response => console.log(response), error => console.log(error));
+  }
 }

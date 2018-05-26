@@ -23,10 +23,5 @@ export class SearchService {
   getPopularEvents(): Observable<EventListModel[]> {
     return this._http.get<EventListModel[]>(this.url + 'GetMostPopularEvents/');
   }
-  getEvent(id: string): Observable<EventModel> {
-    return this._http.get<EventModel>(this.url + 'GetEventWithHostName/' + id);
-  }
-  getParticipants(id: string): Observable<string> {
-    return this._http.get<string>(this.url + 'GetUsersAssignedToEvent/' + id);
-  }
+
 }
