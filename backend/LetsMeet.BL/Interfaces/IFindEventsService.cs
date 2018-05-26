@@ -19,5 +19,6 @@ namespace LetsMeet.BL.Interfaces
         List<EventWithHostNameViewModel> GetMostPopularEvents();
         void JoinToEvent(int id, string email);
         bool IsAssignedToEvent(int id, string email);
+        void LeaveEvent(int id, string email);
     }
 }

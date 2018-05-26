@@ -119,5 +119,13 @@ namespace LetsMeet.Api.Controllers
                 return NotFound();
             return Ok();
         }
+
+        [HttpPost("LeaveEvent/{id}"), Authorize]
+        public IActionResult LeaveEvent(int id)
+        {
+            var email = HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+            _iFindEventsService.LeaveEvent(id, email);
+            return Ok();
+        }
     }
 }

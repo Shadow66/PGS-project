@@ -19,5 +19,6 @@ namespace LetsMeet.DA.Interfaces
         List<EventWithHostNameDto> GetMostPopularEvents();
         void JoinToEvent(int eventId, string email);
         bool IsAssignedToEvent(int id, string email);
+        void LeaveEvent(int id, string email);
     }
 }

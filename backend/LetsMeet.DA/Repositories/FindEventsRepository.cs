@@ -146,7 +146,20 @@ namespace LetsMeet.DA.Repositories
             if (participant != null)
                 return true;
             return false;
+        }
 
+        public void LeaveEvent(int id, string email)
+        {
+            var eventInDb = _context.Events.SingleOrDefault(n => n.Id == id);
+            var user = _context.Users.Single(u => u.Email == email);
+
+            var participant = _context.Participants.SingleOrDefault(n => n.UserId == user.Id && n.EventId == id);
+            if(participant != null)
+            {
+                _context.Participants.Remove(participant);
+                _context.SaveChanges();
+            }
+            
         }
     }
 }

@@ -100,5 +100,10 @@ namespace LetsMeet.BL.Services
         {
             return _findEventsRepository.IsAssignedToEvent(id, email);
         }
+
+        public void LeaveEvent(int id, string email)
+        {
+            _findEventsRepository.LeaveEvent(id, email);
+        }
     }
 }
