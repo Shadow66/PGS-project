@@ -105,5 +105,11 @@ namespace LetsMeet.BL.Services
         {
             _findEventsRepository.LeaveEvent(id, email);
         }
+
+        public List<EventWithHostNameViewModel> GetMyCreatedEvents(string email)
+        {
+            var result = _findEventsRepository.GetMyCreatedEvents(email);
+            return _mapper.Map<List<EventWithHostNameViewModel>>(result);
+        }
     }
 }

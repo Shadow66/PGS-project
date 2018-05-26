@@ -20,5 +20,6 @@ namespace LetsMeet.DA.Interfaces
         void JoinToEvent(int eventId, string email);
         bool IsAssignedToEvent(int id, string email);
         void LeaveEvent(int id, string email);
+        List<EventWithHostNameDto> GetMyCreatedEvents(string email);
     }
 }

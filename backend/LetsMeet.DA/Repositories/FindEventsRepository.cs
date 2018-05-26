@@ -159,7 +159,14 @@ namespace LetsMeet.DA.Repositories
                 _context.Participants.Remove(participant);
                 _context.SaveChanges();
             }
-            
+        }
+
+        public List<EventWithHostNameDto> GetMyCreatedEvents(string email)
+        {
+            var user = _context.Users.Single(u => u.Email == email);
+            var myEvents = _context.Events.Where(n => n.HostId == user.Id);
+            var result = _mapper.Map<List<EventWithHostNameDto>>(myEvents);
+            return result;
         }
     }
 }

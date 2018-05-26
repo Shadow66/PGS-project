@@ -127,5 +127,12 @@ namespace LetsMeet.Api.Controllers
             _iFindEventsService.LeaveEvent(id, email);
             return Ok();
         }
+
+        [HttpGet("GetMyCreatedEvents"), Authorize]
+        public IActionResult GetMyCreatedEvents()
+        {
+            var email = HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+            return Ok(_iFindEventsService.GetMyCreatedEvents(email));
+        }
     }
 }
