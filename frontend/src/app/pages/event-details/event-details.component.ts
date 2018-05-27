@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { EventModel } from '../../shared/models/event.model';
 import { EventListModel } from '../../shared/models/eventList.model';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { EventService } from '../../shared/services/event.service';
 
 @Component({
@@ -24,7 +24,8 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private eventService: EventService
+    private eventService: EventService,
+    private router: Router
   ) {
     this.route.params.subscribe((params: Params) => {
       if (params['id'] === undefined) {
@@ -43,6 +44,17 @@ export class EventDetailsComponent implements OnInit {
   onJoin() {
     this.eventService
       .joinEvent(this.id)
-      .subscribe(response => console.log(response), error => console.log(error));
+      .subscribe(
+        response => console.log(response),
+        error => console.log(error)
+      );
+  }
+  onLeave() {
+    this.eventService
+      .leaveEvent(this.id)
+      .subscribe(
+        response => console.log(response),
+        error => console.log(error)
+      );
   }
 }
