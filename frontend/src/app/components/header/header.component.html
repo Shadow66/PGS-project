@@ -14,6 +14,11 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/test">Authorization Test</a>
       </li>
+      <ng-template [ngIf]="authService.isAuthenticated()">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/myevents">Manage my events</a>
+        </li>
+      </ng-template>
     </ul>
     <ul class="navbar-nav ml-auto">
       <ng-template [ngIf]="!authService.isAuthenticated()">
