@@ -1,7 +1,5 @@
-export class EventModel {
+export class CreateEventModel {
   constructor(
-    public id: number,
-    public hostName: string,
     public address: string,
     public startDate: Date,
     public endDate: Date,

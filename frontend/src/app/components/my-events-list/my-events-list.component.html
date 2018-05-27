@@ -1,0 +1,22 @@
+<!--<div class="row">
+  <div class="col-10">
+    <app-event *ngFor="let event of events" [event]="event"></app-event>
+  </div>
+  <div class="col">
+      <app-my-events-panel *ngFor="let event of events" ></app-my-events-panel>
+  </div>
+</div>-->
+<div class="row">
+  <div class="col">
+    <ng-template ngFor let-element [ngForOf]="events">
+      <app-event [event]="element"></app-event>
+      <a href="#" class="btn btn-info btn-sm">
+          <span class="glyphicon glyphicon-edit"></span> Edit
+        </a>
+        <a (click)="onDelete(element.id)" class="btn btn-danger btn-sm">
+          <span class="glyphicon glyphicon-remove"></span> Delete
+        </a>
+        <hr>
+    </ng-template>
+  </div>
+</div>

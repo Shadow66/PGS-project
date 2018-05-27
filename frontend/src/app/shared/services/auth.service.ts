@@ -15,6 +15,9 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     const token = this.getToken();
+    if (token === 'null') {
+      return false;
+    }
     return tokenNotExpired(null, token);
   }
 

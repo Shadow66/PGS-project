@@ -33,6 +33,10 @@ import { EventDetailsComponent } from './pages/event-details/event-details.compo
 import { ParticipantsListComponent } from './components/participants-list/participants-list.component';
 import { ParticipantComponent } from './components/participant/participant.component';
 import { EventService } from './shared/services/event.service';
+import { CreateEventComponent } from './pages/create-event/create-event.component';
+import { CategoriesPipe } from './shared/pipes/category.pipe';
+import { MyEventsComponent } from './pages/my-events/my-events.component';
+import { MyEventsListComponent } from './components/my-events-list/my-events-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +53,11 @@ import { EventService } from './shared/services/event.service';
     PopularEventsComponent,
     EventDetailsComponent,
     ParticipantsListComponent,
-    ParticipantComponent
+    ParticipantComponent,
+    CreateEventComponent,
+    CategoriesPipe,
+    MyEventsComponent,
+    MyEventsListComponent
   ],
   imports: [
     BrowserModule,
