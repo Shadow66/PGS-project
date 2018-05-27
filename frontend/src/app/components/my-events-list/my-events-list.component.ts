@@ -10,12 +10,16 @@ import { EventListModel } from '../../shared/models/eventList.model';
 export class MyEventsListComponent implements OnInit {
   events: EventListModel[] = [];
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService) {}
 
   ngOnInit() {
     this.eventService
-    .getMyEvents()
-    .subscribe(events => (this.events = events), error => console.log(error));
+      .getMyEvents()
+      .subscribe(events => (this.events = events), error => console.log(error));
   }
-
+  onDelete(id: string) {
+    this.eventService
+      .deleteEvent(id)
+      .subscribe(response => console.log(response), error => console.log(error));
+  }
 }
