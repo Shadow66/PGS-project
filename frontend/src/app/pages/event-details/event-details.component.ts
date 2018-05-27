@@ -19,7 +19,6 @@ export class EventDetailsComponent implements OnInit {
     null,
     null,
     null,
-    null,
     null
   );
 

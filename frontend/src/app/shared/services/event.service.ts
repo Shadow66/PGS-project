@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EventModel } from '../models/event.model';
 import { Observable } from 'rxjs/Observable';
+import { CreateEventModel } from '../models/createEvent.model';
 
 @Injectable()
 export class EventService {
@@ -16,5 +17,8 @@ export class EventService {
   }
   joinEvent(id: string): Observable<string> {
     return this._http.post<string>(this.url + 'JoinToEvent/' + id, '');
+  }
+  createEvent(event: CreateEventModel): Observable<string> {
+    return this._http.post<string>(this.url, event);
   }
 }
