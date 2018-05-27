@@ -134,5 +134,12 @@ namespace LetsMeet.Api.Controllers
             var email = HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
             return Ok(_iFindEventsService.GetMyCreatedEvents(email));
         }
+
+        [HttpGet("GetEventsAssignedToLoggedUser"), Authorize]
+        public IActionResult GetEventsAssignedToLoggedUser()
+        {
+            var email = HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+            return Ok(_iFindEventsService.GetEventsAssignedToLoggedUser(email));
+        }
     }
 }

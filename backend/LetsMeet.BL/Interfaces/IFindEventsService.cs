@@ -21,5 +21,6 @@ namespace LetsMeet.BL.Interfaces
         bool IsAssignedToEvent(int id, string email);
         void LeaveEvent(int id, string email);
         List<EventWithHostNameViewModel> GetMyCreatedEvents(string email);
+        List<EventWithHostNameViewModel> GetEventsAssignedToLoggedUser(string email);
     }
 }

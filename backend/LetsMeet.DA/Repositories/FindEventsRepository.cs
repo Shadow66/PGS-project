@@ -168,5 +168,29 @@ namespace LetsMeet.DA.Repositories
             var result = _mapper.Map<List<EventWithHostNameDto>>(myEvents);
             return result;
         }
+
+        public List<EventWithHostNameDto> GetEventsAssignedToLoggedUser(string email)
+        {
+            var user = _context.Users.Single(u => u.Email == email);
+            var assignedEvents = new List<Event>();
+            var result = new List<Event>();
+
+            var assignedParticipants = _context.Participants
+                .Include(e => e.Event)
+                .Where(p => p.UserId == user.Id)
+                .Include(u => u.User)
+                .ToList();
+            assignedParticipants.ForEach(n => assignedEvents.Add(n.Event));
+            var AllEventsFromDb = _context.Events.Include(u => u.User).ToList();
+            foreach(var item in AllEventsFromDb)
+            {
+                foreach(var item2 in assignedEvents)
+                {
+                    if (item.Id == item2.Id)
+                        result.Add(item);
+                }
+            }
+            return _mapper.Map<List<EventWithHostNameDto>>(result);
+        }
     }
 }

@@ -111,5 +111,11 @@ namespace LetsMeet.BL.Services
             var result = _findEventsRepository.GetMyCreatedEvents(email);
             return _mapper.Map<List<EventWithHostNameViewModel>>(result);
         }
+
+        public List<EventWithHostNameViewModel> GetEventsAssignedToLoggedUser(string email)
+        {
+            var result = _findEventsRepository.GetEventsAssignedToLoggedUser(email);
+            return _mapper.Map<List<EventWithHostNameViewModel>>(result);
+        }
     }
 }
