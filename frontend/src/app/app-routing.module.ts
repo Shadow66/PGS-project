@@ -7,6 +7,7 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { TestComponent } from './components/test/test.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { EventDetailsComponent } from './pages/event-details/event-details.component';
+import { CreateEventComponent } from './pages/create-event/create-event.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path: 'event/:id',
     component: EventDetailsComponent
+  },
+  {
+    path: 'create',
+    component: CreateEventComponent,
+    canActivate: [AuthGuardService]
   },
 ];
 
