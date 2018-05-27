@@ -34,6 +34,7 @@ import { ParticipantsListComponent } from './components/participants-list/partic
 import { ParticipantComponent } from './components/participant/participant.component';
 import { EventService } from './shared/services/event.service';
 import { CreateEventComponent } from './pages/create-event/create-event.component';
+import { CategoriesPipe } from './shared/pipes/category.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { CreateEventComponent } from './pages/create-event/create-event.componen
     EventDetailsComponent,
     ParticipantsListComponent,
     ParticipantComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    CategoriesPipe
   ],
   imports: [
     BrowserModule,
