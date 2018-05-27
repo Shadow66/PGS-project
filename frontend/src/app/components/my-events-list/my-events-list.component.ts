@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../shared/services/event.service';
 import { EventListModel } from '../../shared/models/eventList.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-events-list',
@@ -10,7 +11,7 @@ import { EventListModel } from '../../shared/models/eventList.model';
 export class MyEventsListComponent implements OnInit {
   events: EventListModel[] = [];
 
-  constructor(private eventService: EventService) {}
+  constructor(private eventService: EventService, private router: Router) {}
 
   ngOnInit() {
     this.eventService
@@ -20,6 +21,13 @@ export class MyEventsListComponent implements OnInit {
   onDelete(id: string) {
     this.eventService
       .deleteEvent(id)
-      .subscribe(response => console.log(response), error => console.log(error));
+      .subscribe(
+        response => console.log(response),
+        error => console.log(error)
+      );
+  }
+  onEdit(input: string) {
+    console.log(input);
+    this.router.navigateByUrl('/edit/' + input);
   }
 }

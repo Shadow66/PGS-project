@@ -25,7 +25,6 @@ export class CreateEventComponent implements OnInit {
       form.value.category,
       form.value.description
     );
-    console.log(event);
     this.eventService
       .createEvent(event)
       .subscribe(
