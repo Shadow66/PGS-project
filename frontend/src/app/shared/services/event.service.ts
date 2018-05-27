@@ -4,6 +4,7 @@ import { EventModel } from '../models/event.model';
 import { Observable } from 'rxjs/Observable';
 import { CreateEventModel } from '../models/createEvent.model';
 import { EventListModel } from '../models/eventList.model';
+import { EditEventModel } from '../models/editEvent.model';
 
 @Injectable()
 export class EventService {
@@ -27,6 +28,9 @@ export class EventService {
   }
   deleteEvent(id: string): Observable<string> {
     return this._http.delete<string>(this.url + id);
+  }
+  editEvent(event: EditEventModel): Observable<string> {
+    return this._http.put<string>(this.url, event);
   }
   getMyEvents(): Observable<EventListModel[]> {
     return this._http.get<EventListModel[]>(this.url + 'GetMyCreatedEvents');

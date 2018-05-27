@@ -37,6 +37,7 @@ import { CreateEventComponent } from './pages/create-event/create-event.componen
 import { CategoriesPipe } from './shared/pipes/category.pipe';
 import { MyEventsComponent } from './pages/my-events/my-events.component';
 import { MyEventsListComponent } from './components/my-events-list/my-events-list.component';
+import { EditEventComponent } from './pages/edit-event/edit-event.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,8 @@ import { MyEventsListComponent } from './components/my-events-list/my-events-lis
     CreateEventComponent,
     CategoriesPipe,
     MyEventsComponent,
-    MyEventsListComponent
+    MyEventsListComponent,
+    EditEventComponent
   ],
   imports: [
     BrowserModule,

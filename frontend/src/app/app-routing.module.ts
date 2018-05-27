@@ -9,6 +9,7 @@ import { AuthGuardService } from './shared/services/auth-guard.service';
 import { EventDetailsComponent } from './pages/event-details/event-details.component';
 import { CreateEventComponent } from './pages/create-event/create-event.component';
 import { MyEventsComponent } from './pages/my-events/my-events.component';
+import { EditEventComponent } from './pages/edit-event/edit-event.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateEventComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'edit/:id',
+    component: EditEventComponent,
     canActivate: [AuthGuardService]
   },
   {
