@@ -25,6 +25,9 @@ export class EventService {
   createEvent(event: CreateEventModel): Observable<string> {
     return this._http.post<string>(this.url, event);
   }
+  deleteEvent(id: string): Observable<string> {
+    return this._http.delete<string>(this.url + id);
+  }
   getMyEvents(): Observable<EventListModel[]> {
     return this._http.get<EventListModel[]>(this.url + 'GetMyCreatedEvents');
   }
