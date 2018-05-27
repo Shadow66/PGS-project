@@ -18,6 +18,9 @@ export class EventService {
   joinEvent(id: string): Observable<string> {
     return this._http.post<string>(this.url + 'JoinToEvent/' + id, '');
   }
+  leaveEvent(id: string): Observable<string> {
+    return this._http.post<string>(this.url + 'LeaveEvent/' + id, '');
+  }
   createEvent(event: CreateEventModel): Observable<string> {
     return this._http.post<string>(this.url, event);
   }
