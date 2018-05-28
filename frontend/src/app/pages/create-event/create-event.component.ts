@@ -31,6 +31,8 @@ export class CreateEventComponent implements OnInit {
         response => console.log(response),
         error => console.log(error)
       );
-    this.router.navigate(['/myevents/']);
+    setTimeout(() => {
+      this.router.navigate(['/myevents/']);
+    }, 100);
   }
 }
