@@ -18,13 +18,14 @@ export class MyEventsListComponent implements OnInit {
       .getMyEvents()
       .subscribe(events => (this.events = events), error => console.log(error));
   }
-  onDelete(id: string) {
+  onDelete(id: string, ind) {
     this.eventService
       .deleteEvent(id)
       .subscribe(
         response => console.log(response),
         error => console.log(error)
       );
+      this.events.splice(ind, 1);
   }
   onEdit(input: string) {
     console.log(input);
