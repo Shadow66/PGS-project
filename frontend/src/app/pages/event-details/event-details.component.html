@@ -1,16 +1,18 @@
 <div class="main container">
   <div class="row">
     <div class="col">
-        Start: {{ event.startDate | date: 'dd-mm-yyyy, hh:mm a' }} <br>
-        End: {{ event.endDate | date: 'dd-mm-yyyy, hh:mm a' }} <br>
-        <h4>  {{ event.title }}<br></h4>
-        organized by {{ event.hostName }}
+      Start: {{ event.startDate | date: 'dd-mm-yyyy, hh:mm a' }}
+      <br> End: {{ event.endDate | date: 'dd-mm-yyyy, hh:mm a' }}
+      <br>
+      <h4> {{ event.title }}
+        <br>
+      </h4>
+      organized by {{ event.hostName }}
     </div>
     <div class="col">
     </div>
     <div class="col">
-      <button class="btn btn-primary" (click)="onJoin()">Join</button>
-      <button class="btn btn-primary" (click)="onLeave()">Leave</button>
+      <app-join [joinnable]="joinnable" [id]="id"></app-join>
     </div>
   </div>
   <hr>
