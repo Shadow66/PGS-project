@@ -38,6 +38,7 @@ import { CategoriesPipe } from './shared/pipes/category.pipe';
 import { MyEventsComponent } from './pages/my-events/my-events.component';
 import { MyEventsListComponent } from './components/my-events-list/my-events-list.component';
 import { EditEventComponent } from './pages/edit-event/edit-event.component';
+import { JoinComponent } from './components/join/join.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import { EditEventComponent } from './pages/edit-event/edit-event.component';
     CategoriesPipe,
     MyEventsComponent,
     MyEventsListComponent,
-    EditEventComponent
+    EditEventComponent,
+    JoinComponent
   ],
   imports: [
     BrowserModule,
