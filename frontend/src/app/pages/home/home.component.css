@@ -1,8 +1,9 @@
 .RecentlyPopular {
   color: white;
   font-size: 27px;
-  background-color: #00ccff;
+  font-weight: bold;
+  background-color:#0190b4;
   text-align: center;
-  margin: 5px;
-  padding: 3px;
+  /* margin: 5px; */
+  /* padding: 3px; */
 }

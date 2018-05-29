@@ -10,10 +10,10 @@
   <div class="col">
     <ng-template ngFor let-element [ngForOf]="events">
       <app-event [event]="element"></app-event>
-      <a (click)="onEdit(element.id)" class="btn btn-info btn-sm">
+      <a (click)="onEdit(element.id)" class="btn btn-outline-info"style="color:white; border:2px solid white; font-weight:bold;">
           <span class="glyphicon glyphicon-edit"></span> Edit
         </a>
-        <a (click)="onDelete(element.id)" class="btn btn-danger btn-sm">
+        <a (click)="onDelete(element.id)" class="btn btn-outline-danger" style="color:white; border:2px solid white; font-weight: bold;">
           <span class="glyphicon glyphicon-remove"></span> Delete
         </a>
         <hr>

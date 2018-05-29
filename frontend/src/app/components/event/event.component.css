@@ -1,0 +1,10 @@
+.list-group-item.clearfix:hover {
+    background-color:black;
+    transition: 2s;
+    color:rgb(4, 226, 255);
+}
+
+
+.list-group-item.clearfix {
+    transition:2s;
+}

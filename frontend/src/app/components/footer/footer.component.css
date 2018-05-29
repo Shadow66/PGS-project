@@ -1,4 +1,11 @@
 .footer {
   text-align: center;
-  padding: 3em;
+  /* padding: 3em; */
+  position:fixed;
+  width:100%;
+  left:0;
+  bottom:0;
+  color:white;
+  height:35px;
+  background-color:black !important;
 }

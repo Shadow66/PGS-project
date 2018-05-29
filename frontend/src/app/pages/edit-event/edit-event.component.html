@@ -2,7 +2,8 @@
   <div class="row">
     <div>
       <form (ngSubmit)="onEdit(f)" #f="ngForm">
-        <div class="form-group">
+        <div class="form-group" style="color:white">
+          <h5>
           <label for="title">Title:</label>
           <input [ngModel]="eventDetails.title" type="text" name="title" ngModel class="form-control">
           <label for="description">Description:</label>
@@ -17,6 +18,7 @@
           <input [ngModel] ="eventDetails.endDate | date:'yyyy-MM-ddThh:mm'" type="datetime-local" name="endDate" ngModel class="form-control">
           <label for="address">Address:</label>
           <input [ngModel]="eventDetails.address" type="address" name="address" ngModel class="form-control">
+        </h5>
         </div>
         <button type="submit" class="btn btn-primary">Edit</button>
       </form>

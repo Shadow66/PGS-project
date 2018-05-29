@@ -1,27 +1,39 @@
-<div class="main container">
+<div class="main container" style="color:white">
   <div class="row">
     <div class="col">
+        <h4>  
+            
+              <i class="far fa-comment-alt" style="font-size: 25px;"></i>
+              {{ event.title }}<br></h4>
+          <br>
+          <h5>
+        <i class="far fa-calendar" style="font-size: 25px;"></i>
         Start: {{ event.startDate | date: 'dd-mm-yyyy, hh:mm a' }} <br>
+        <br>
+        <i class="far fa-calendar" style="font-size: 25px;"></i>
         End: {{ event.endDate | date: 'dd-mm-yyyy, hh:mm a' }} <br>
-        <h4>  {{ event.title }}<br></h4>
-        organized by {{ event.hostName }}
+       
+        <br>
+          <i class="fas fa-user" style="font-size: 25px;"></i>
+          organized by {{ event.hostName }}
+        </h5>
     </div>
+    
     <div class="col">
-    </div>
-    <div class="col">
-      <button class="btn btn-primary" (click)="onJoin()">Join</button>
-      <button class="btn btn-primary" (click)="onLeave()">Leave</button>
+      <button class="btn btn-outline-info"style="color:white; border:2px solid white; font-weight:bold;" (click)="onJoin()">Join</button>
+      <button class="btn btn-outline-danger" style="color:white; border:2px solid white; font-weight: bold;" (click)="onLeave()">Leave</button>
     </div>
   </div>
-  <hr>
-  <div class="row">
+  <br>
+  <div class="row" style="font-size: 18px;">
     <div class="col">
+        <i class="fas fa-font" style="font-size: 25px;"></i>
       {{ event.description }}
-      <hr>
+     <br><br>
       <app-participants-list [eventId]="event.id"></app-participants-list>
     </div>
     <div class="col">
-      Map
+      
     </div>
   </div>
 </div>
