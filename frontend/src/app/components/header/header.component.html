@@ -11,12 +11,12 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/find">Find</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/test">Authorization Test</a>
-      </li>
       <ng-template [ngIf]="authService.isAuthenticated()">
         <li class="nav-item">
           <a class="nav-link" routerLink="/myevents">Manage my events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/create">Create event</a>
         </li>
       </ng-template>
     </ul>
@@ -30,9 +30,6 @@
         </li>
       </ng-template>
       <ng-template [ngIf]="authService.isAuthenticated()">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/create">Create event</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" style="cursor: pointer;" (click)="onLogout()">Logout</a>
         </li>

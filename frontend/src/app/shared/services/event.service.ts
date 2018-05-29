@@ -35,7 +35,7 @@ export class EventService {
   getMyEvents(): Observable<EventListModel[]> {
     return this._http.get<EventListModel[]>(this.url + 'GetMyCreatedEvents');
   }
-  joinnable(id: string): Observable<string>{
+  joinnable(id: string): Observable<string> {
     return this._http.get<string>(this.url + 'IsAssignedToEvent/' + id);
   }
 }

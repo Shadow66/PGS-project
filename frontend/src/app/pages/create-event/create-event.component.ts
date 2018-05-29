@@ -3,17 +3,17 @@ import { NgForm } from '@angular/forms';
 import { EventService } from '../../shared/services/event.service';
 import { CreateEventModel } from '../../shared/models/createEvent.model';
 import { Category } from '../../shared/enums/category.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
-  styleUrls: ['./create-event.component.css'],
+  styleUrls: ['./create-event.component.css']
 })
 export class CreateEventComponent implements OnInit {
   categories = Category;
 
-  constructor(private eventService: EventService) {
-  }
+  constructor(private eventService: EventService, private router: Router) {}
 
   ngOnInit() {}
   onCreate(form: NgForm) {
@@ -31,5 +31,8 @@ export class CreateEventComponent implements OnInit {
         response => console.log(response),
         error => console.log(error)
       );
+    setTimeout(() => {
+      this.router.navigate(['/myevents/']);
+    }, 100);
   }
 }
