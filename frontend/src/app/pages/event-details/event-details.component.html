@@ -1,49 +1,41 @@
 <div class="main container" style="color:white">
   <div class="row">
     <div class="col">
-        <h4>  
-            
-              <i class="far fa-comment-alt" style="font-size: 25px;"></i>
-              {{ event.title }}<br></h4>
-          <br>
-          <h5>
-        <i class="far fa-calendar" style="font-size: 25px;"></i>
-        Start: {{ event.startDate | date: 'dd-mm-yyyy, hh:mm a' }} <br>
-        <br>
-        <i class="far fa-calendar" style="font-size: 25px;"></i>
-        End: {{ event.endDate | date: 'dd-mm-yyyy, hh:mm a' }} <br>
-       
-        <br>
-          <i class="fas fa-user" style="font-size: 25px;"></i>
-          organized by {{ event.hostName }}
-        </h5>
-
-      Start: {{ event.startDate | date: 'dd-MM-yyyy, HH:mm' }}
-      <br> End: {{ event.endDate | date: 'dd-MM-yyyy, HH:mm' }}
-      <br>
-      <h4> {{ event.title }}
+      <h4>
+        <i class="far fa-comment-alt" style="font-size: 25px;"></i>
+        {{ event.title }}
         <br>
       </h4>
-      organized by {{ event.hostName }}
-    </div>
-    
-    <div class="col">
+      <br>
+      <h5>
+        <i class="far fa-calendar" style="font-size: 25px;"></i>
+        Start: {{ event.startDate | date: 'dd-MM-yyyy, HH:mm' }}
+        <br>
+        <br>
+        <i class="far fa-calendar" style="font-size: 25px;"></i>
+        End: {{ event.endDate | date: 'dd-MM-yyyy, HH:mm' }}
+        <br>
 
-      <button class="btn btn-outline-info"style="color:white; border:2px solid white; font-weight:bold;" (click)="onJoin()">Join</button>
-      <button class="btn btn-outline-danger" style="color:white; border:2px solid white; font-weight: bold;" (click)="onLeave()">Leave</button>
+        <br>
+        <i class="fas fa-user" style="font-size: 25px;"></i>
+        organized by {{ event.hostName }}
+      </h5>
+    </div>
 
+    <div class="col">
     </div>
     <div class="col">
+      <br>
       <app-join [joinnable]="joinnable" [id]="id"></app-join>
-
     </div>
   </div>
   <br>
   <div class="row" style="font-size: 18px;">
     <div class="col">
-        <i class="fas fa-font" style="font-size: 25px;"></i>
+      <i class="fas fa-font" style="font-size: 25px;"></i>
       {{ event.description }}
-     <br><br>
+      <br>
+      <br>
       <app-participants-list [eventId]="event.id"></app-participants-list>
     </div>
     <div class="col">

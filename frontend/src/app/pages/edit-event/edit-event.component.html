@@ -4,21 +4,21 @@
       <form (ngSubmit)="onEdit(f)" #f="ngForm">
         <div class="form-group" style="color:white">
           <h5>
-          <label for="title">Title:</label>
-          <input [ngModel]="eventDetails.title" type="text" name="title" ngModel class="form-control">
-          <label for="description">Description:</label>
-          <input [ngModel]="eventDetails.description" type="text" name="description" ngModel class="form-control">
-          <label for="category">Category:</label>
-          <select [ngModel]="eventDetails.category" name="category" ngModel class="form-control">
-            <option *ngFor="let item of categories  | categoriesPipe" [value]="item.key">{{item.value}}</option>
-          </select>
-          <label for="startDate">Start date:</label>
-          <input [ngModel] ="eventDetails.startDate | date:'yyyy-MM-ddThh:mm'" type="datetime-local" name="startDate" ngModel class="form-control">
-          <label for="endDate">End date:</label>
-          <input [ngModel] ="eventDetails.endDate | date:'yyyy-MM-ddThh:mm'" type="datetime-local" name="endDate" ngModel class="form-control">
-          <label for="address">Address:</label>
-          <input [ngModel]="eventDetails.address" type="address" name="address" ngModel class="form-control">
-        </h5>
+            <label for="title">Title:</label>
+            <input [ngModel]="eventDetails.title" type="text" name="title" ngModel class="form-control">
+            <label for="address">Address:</label>
+            <input [ngModel]="eventDetails.address" type="address" name="address" ngModel class="form-control">
+            <label for="category">Category:</label>
+            <select [ngModel]="eventDetails.category" name="category" ngModel class="form-control">
+              <option *ngFor="let item of categories  | categoriesPipe" [value]="item.key">{{item.value}}</option>
+            </select>
+            <label for="startDate">Start date:</label>
+            <input [ngModel]="eventDetails.startDate | date:'yyyy-MM-ddThh:mm'" type="datetime-local" name="startDate" ngModel class="form-control">
+            <label for="endDate">End date:</label>
+            <input [ngModel]="eventDetails.endDate | date:'yyyy-MM-ddThh:mm'" type="datetime-local" name="endDate" ngModel class="form-control">
+            <label for="description">Description:</label>
+            <input [ngModel]="eventDetails.description" type="text" name="description" ngModel class="form-control">
+          </h5>
         </div>
         <button type="submit" class="btn btn-primary">Edit</button>
       </form>

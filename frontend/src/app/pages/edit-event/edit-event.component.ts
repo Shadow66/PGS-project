@@ -31,12 +31,13 @@ export class EditEventComponent implements OnInit {
     this.eventService
       .getEvent(this.id)
       .subscribe(
-        event => (this.eventDetails = event),
+        event => this.eventDetails = event,
         error => console.log(error)
       );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
   onEdit(form: NgForm) {
     const event: EditEventModel = new EditEventModel(
       this.eventDetails.id,

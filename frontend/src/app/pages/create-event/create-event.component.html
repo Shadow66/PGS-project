@@ -4,20 +4,20 @@
       <form (ngSubmit)="onCreate(f)" #f="ngForm">
         <div class="form-group" style="color:white">
           <h5>
-          <label for="title">Title:</label>
-          <input type="text" name="title" ngModel class="form-control">
-          <label for="description">Description:</label>
-          <input type="text" name="description" ngModel class="form-control">
-          <label for="category">Category:</label>
-          <select name="category" ngModel class="form-control">
+            <label for="title">Title:</label>
+            <input type="text" name="title" ngModel class="form-control">
+            <label for="address">Address:</label>
+            <input type="address" name="address" ngModel class="form-control">
+            <label for="category">Category:</label>
+            <select name="category" ngModel class="form-control">
               <option *ngFor="let item of categories  | categoriesPipe" [value]="item.key">{{item.value}}</option>
-           </select>
-          <label for="startDate">Start date:</label>
-          <input type="datetime-local" name="startDate" ngModel class="form-control">
-          <label for="endDate">End date:</label>
-          <input type="datetime-local" name="endDate" ngModel class="form-control">
-          <label for="address">Address:</label>
-          <input type="address" name="address" ngModel class="form-control">
+            </select>
+            <label for="startDate">Start date:</label>
+            <input type="datetime-local" name="startDate" ngModel class="form-control">
+            <label for="endDate">End date:</label>
+            <input type="datetime-local" name="endDate" ngModel class="form-control">
+            <label for="description">Description:</label>
+            <input type="text" name="description" ngModel class="form-control">
           </h5>
         </div>
         <button type="submit" class="btn btn-primary">Create</button>

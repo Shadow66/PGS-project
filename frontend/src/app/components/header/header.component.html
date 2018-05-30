@@ -1,75 +1,64 @@
 <html>
 <head>
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css"> -->
-
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-  <!-- <base href="/"> -->
-<!-- <link rel="stylesheet" href="/../../shared/icons/css/fontello.css" type="text/css"> -->
-<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> -->
-<!-- <link rel="stylesheet" href="/C:/Users/Piotrek/source/repos/Test/Second/PGS-project/frontend/src/app/shared/icons/css/fontello.css" type="text/css"/> -->
-<!-- <link rel="stylesheet" href="/css/fontello.css" type="text/css"/> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
 </head>
+
 <body>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-  <a class="navbar-brand" routerLink="">
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" routerLink="">
       <i class="far fa-calendar-check" style="font-size: 30px;"></i>
       <i class="fas fa-child" style="font-size: 30px;"></i>
       Lets Meet</a>
-  <button (click)="toggleCollapse()" class="navbar-toggler navbar-toggler-right" type="button">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" [class.show]="show">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="">
+    <button (click)="toggleCollapse()" class="navbar-toggler navbar-toggler-right" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [class.show]="show">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="">
             <i class="fas fa-home" style="font-size: 30px;"></i>
-          Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/find">
-          <i class="fab fa-searchengin" style="font-size: 30px;"></i>
-          Find</a>
-      </li>
-      <ng-template [ngIf]="authService.isAuthenticated()">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/myevents">
-            <i class="fas fa-wrench" style="font-size: 30px;"></i>
-            Manage my events</a>
-        </li>
-       
-      </ng-template>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <ng-template [ngIf]="!authService.isAuthenticated()">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/signin">
-            <i class="fas fa-sign-in-alt" style="font-size: 30px;"></i>
-            Sign in</a>
+            Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/signup">
-            <i class="fas fa-user-plus" style="font-size: 29px;"></i>
-            Sign up</a>
+          <a class="nav-link" routerLink="/find">
+            <i class="fab fa-searchengin" style="font-size: 30px;"></i>
+            Find</a>
         </li>
-      </ng-template>
-      <ng-template [ngIf]="authService.isAuthenticated()">
-        <li class="nav-item">
-
-          <a class="nav-link" routerLink="/create">
-            <i class="fas fa-plus" style="font-size: 30px;"></i>
-            Create event</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer;" (click)="onLogout()">
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <ng-template [ngIf]="!authService.isAuthenticated()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/signin">
+              <i class="fas fa-sign-in-alt" style="font-size: 30px;"></i>
+              Sign in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/signup">
+              <i class="fas fa-user-plus" style="font-size: 29px;"></i>
+              Sign up</a>
+          </li>
+        </ng-template>
+        <ng-template [ngIf]="authService.isAuthenticated()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/myevents">
+              <i class="fas fa-wrench" style="font-size: 30px;"></i>
+              Manage events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/create">
+              <i class="fas fa-plus" style="font-size: 30px;"></i>
+              Create event</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer;" (click)="onLogout()">
               <i class="fas fa-sign-out-alt" style="font-size: 30px;"></i>
-            Logout</a>
-
-          
-
-        </li>
-      </ng-template>
-    </ul>
-  </div>
-</nav>
+              Logout</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </nav>
 </body>
+
 </html>

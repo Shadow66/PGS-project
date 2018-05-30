@@ -1,19 +1,11 @@
-<!--<div class="row">
-  <div class="col-10">
-    <app-event *ngFor="let event of events" [event]="event"></app-event>
-  </div>
-  <div class="col">
-      <app-my-events-panel *ngFor="let event of events" ></app-my-events-panel>
-  </div>
-</div>-->
 <div class="row">
   <div class="col">
-    <ng-template ngFor let-element [ngForOf]="events">
+    <ng-template ngFor let-element [ngForOf]="events" let-i="index">
       <app-event [event]="element"></app-event>
       <a (click)="onEdit(element.id)" class="btn btn-outline-info"style="color:white; border:2px solid white; font-weight:bold;">
           <span class="glyphicon glyphicon-edit"></span> Edit
         </a>
-        <a (click)="onDelete(element.id)" class="btn btn-outline-danger" style="color:white; border:2px solid white; font-weight: bold;">
+        <a (click)="onDelete(element.id, i)" class="btn btn-outline-danger" style="color:white; border:2px solid white; font-weight: bold;">
           <span class="glyphicon glyphicon-remove"></span> Delete
         </a>
         <hr>
